@@ -1,9 +1,14 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour
+public class DashController : MonoBehaviour
 {
+    private InputSystem_Actions inputActions;
+    public PlayerMovement characterController;
+
+
     [Header("Movement")]
     public float moveSpeed = 5f;
     private Vector3 moveInput;
@@ -20,39 +25,38 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     public DashTrail dashTrailPrefab;
 
-    void Start()
+    private void Awake()
     {
+        inputActions = new InputSystem_Actions();
+
         rb = GetComponent<Rigidbody>();
+
+        characterController = GetComponent<PlayerMovement>();
     }
 
-    void Update()
+    private void OnEnable()
     {
-        if (!isDashing)
-        {
-            float h = Input.GetAxisRaw("Horizontal");
-            float v = Input.GetAxisRaw("Vertical");
-            moveInput = new Vector3(h, 0f, v).normalized;
+        inputActions.Player.Dash.performed += ctx => StartCoroutine(DashCoroutine());
 
-            if (moveInput.magnitude > 0.1f)
-                transform.forward = moveInput;
-        }
 
-        if (Input.GetKeyDown(KeyCode.Space) && canDash)
-        {
-            StartCoroutine(DashCoroutine());
-        }
+        inputActions.Player.Enable();
+
     }
 
-    void FixedUpdate()
+    private void OnDisable()
     {
-        if (!isDashing)
-        {
-            rb.linearVelocity = new Vector3(moveInput.x * moveSpeed, rb.linearVelocity.y, moveInput.z * moveSpeed);
-        }
+
+        inputActions.Player.Disable();
     }
+
+
 
     IEnumerator DashCoroutine()
     {
+        print("Dashing");
+
+        characterController.SetCanMove(false);
+
         isDashing = true;
         canDash = false;
 
@@ -79,13 +83,16 @@ public class PlayerController : MonoBehaviour
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
 
         isDashing = false;
+        characterController.SetCanMove(true);
+
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
+
     }
 
     void CreateDashTrail(Vector3 start, Vector3 end)
     {
-        DashTrail trail = Instantiate(dashTrailPrefab, Vector3.zero, Quaternion.identity);
+        DashTrail trail = Instantiate(dashTrailPrefab, new Vector3(0, start.y+20, 0), Quaternion.identity);
         trail.Initialize(start, end);
     }
 }
