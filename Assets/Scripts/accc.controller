@@ -9,7 +9,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: firstAttacked
+    m_ConditionEvent: firstAttack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2952126506148589783}
@@ -34,7 +34,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: firstAttacked
+    m_ConditionEvent: firstAttack
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: secondAttack
@@ -90,7 +90,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: firstAttacked
+    m_ConditionEvent: firstAttack
     m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: secondAttack
@@ -118,7 +118,7 @@ AnimatorController:
   m_Name: accc
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: firstAttacked
+  - m_Name: firstAttack
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -234,7 +234,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: firstAttacked
+    m_ConditionEvent: firstAttack
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: secondAttack

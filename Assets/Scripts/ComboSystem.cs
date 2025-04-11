@@ -7,6 +7,13 @@ public class ComboSystem : MonoBehaviour
     // Animation references
     [SerializeField] private Animator animator;
     
+    [Header("Attack Settings")]
+    [SerializeField] private float firstAttackDamage = 20f;
+    [SerializeField] private float secondAttackDamage = 35f;
+    [SerializeField] private float attackRange = 2f;
+    [SerializeField] private LayerMask enemyLayers;
+    [SerializeField] private Transform attackPoint;
+    
     // Combo state
     private bool firstAttack = false;
     private bool secondAttack = false;
@@ -16,54 +23,34 @@ public class ComboSystem : MonoBehaviour
     {
         if (animator == null)
             animator = GetComponent<Animator>();
+            
+        if (attackPoint == null)
+            attackPoint = transform;
     }
     
     private void Update()
     {
 
-        // Check for attack input (replace with your input method)
         if (Input.GetButtonDown("Fire1") || Input.GetMouseButtonDown(0))
         {
             PerformAttack();
         }
-
-        animator.SetBool("firstAttacked",firstAttack);
+        animator.SetBool("firstAttack",firstAttack);
         animator.SetBool("secondAttack",secondAttack);
     }
     
     private void PerformAttack()
     {
-        // First attack in combo
         if (!firstAttack && !secondAttack)
         {
             firstAttack = true;
-            
-            // Play first attack animation
-            if (animator != null)
-                animator.SetBool("firstAttack",true);
-            
-            Debug.Log("First Attack");
         }
-        // Second attack in combo
         else if (firstAttack && !secondAttack)
         {
             secondAttack = true;
-            
-            // Play second attack animation
-            if (animator != null)
-                animator.SetBool("secondAttack",true);
-            
-            Debug.Log("Second Attack");
-            
-        }
+        }  
     }
     
-    private void ResetCombo()
-    {
-        firstAttack = false;
-        secondAttack = false;
-        Debug.Log("Combo Reset");
-    }
     public void AfterFirstAttack()
     {
         if (!secondAttack)
@@ -71,9 +58,48 @@ public class ComboSystem : MonoBehaviour
             firstAttack = false;
         }
     }
-     public void AfterSecondAttack()
+    
+    public void AfterSecondAttack()
     {
         secondAttack = false;
         firstAttack = false;
+    }
+    
+    // Called from animation event during first attack animation
+    public void DealFirstAttackDamage()
+    {
+        DealDamageInArea(firstAttackDamage);
+    }
+    
+    // Called from animation event during second attack animation
+    public void DealSecondAttackDamage()
+    {
+        DealDamageInArea(secondAttackDamage);
+    }
+    
+    private void DealDamageInArea(float damageAmount)
+    {
+        // Detect enemies in range
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+        
+        // Apply damage to enemies
+        foreach (Collider enemy in hitEnemies)
+        {
+            EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(damageAmount);
+            }
+        }
+    }
+    
+    // Optional: Visualize the attack range in the editor
+    private void OnDrawGizmos()
+    {
+        if (attackPoint == null)
+            return;
+            
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 } 
