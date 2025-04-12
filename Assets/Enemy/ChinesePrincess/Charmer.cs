@@ -13,19 +13,16 @@ public class Charmer : MonoBehaviour
 
         foreach (Collider col in colliders)
         {
-            print("Collider: " + col.name);
             Rigidbody rb = col.attachedRigidbody;
 
             if (rb != null)
             {
-                print("Rigidbody: " + rb.name);
                 // Bu scriptin baðlý olduðu objeye doðru yön
                 Vector3 direction = new Vector3(transform.position.x - rb.position.x, 0, transform.position.z - rb.position.z);
 
                 // Hafif bir çekim kuvveti uygula
                 rb.AddForce(direction * pullForce, ForceMode.Force); // daha güçlüdür
 
-                Debug.Log("Applied force magnitude: " + (direction*pullForce).magnitude);
 
             }
         }

@@ -2,12 +2,27 @@ using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
-    protected Archer archer;
+    protected KeyCode keyCode;
+    [SerializeField] protected SkillBar skillBar;
 
-    public virtual void Initialize(Archer archer)
+
+    public SkillBar GetSkillBar()
     {
-        this.archer = archer;
+        return skillBar;
     }
 
-    public abstract void UseSkill();
+    public void SetSkillBar(SkillBar skillBar)
+    {
+        this.skillBar = skillBar;
+    }
+
+    public KeyCode GetKeyCode()
+    {
+        return keyCode;
+    }
+
+    public void SetKeyCode(KeyCode key)
+    {
+        this.keyCode = key;
+    }
 }
