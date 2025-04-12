@@ -29,7 +29,10 @@ public class BasicMovement : MonoBehaviour
     private void OnEnable()
     {
         inputActions.Player.Enable();
-        inputActions.Player.Attack.performed += ctx => archer.Attack(this);
+        if (archer != null)
+        {
+            inputActions.Player.Attack.performed += ctx => archer.Attack(this);
+        }
         inputActions.Player.Jump.performed += ctx => Jump();
     }
 
@@ -84,10 +87,10 @@ public class BasicMovement : MonoBehaviour
     {
         print("Checking if grounded : " + currentJumps);
 
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f); // Yere yakýnsa grounded
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f); // Yere yakï¿½nsa grounded
         if (isGrounded)
         {
-            currentJumps = 0; // Zeminle temasta iken zýplama sayýsýný sýfýrla
+            currentJumps = 0; // Zeminle temasta iken zï¿½plama sayï¿½sï¿½nï¿½ sï¿½fï¿½rla
         }
     }
 
