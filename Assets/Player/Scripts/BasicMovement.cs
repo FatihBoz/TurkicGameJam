@@ -15,15 +15,15 @@ public class BasicMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed = 10f;
 
     [Header("Jump")]
+    [SerializeField] private float groundCheckRadius = 0.2f;
+    [SerializeField] private float groundCheckDistance = 0.3f;
+    [SerializeField] private Vector3 groundCheckOffset = new Vector3(0, 0.1f, 0);
     [SerializeField] private float jumpForce = 7f;
     [SerializeField] private int maxJumps = 2;
     private int currentJumps;
     private bool isGrounded;
 
     private bool canMove = true;
-
-    private bool canGetInput = true;
-
 
 
     private void Awake()
@@ -34,19 +34,17 @@ public class BasicMovement : MonoBehaviour
 
         archer = GetComponent<Archer>();
 
-
-
     }
 
     private void OnEnable()
     {
+        inputActions.Player.Jump.performed += ctx => Jump();
         inputActions.Player.Enable();
         inputActions.UI.Enable();
         if (archer != null)
         {
             inputActions.Player.Attack.performed += ctx => archer.Attack(this);
         }
-        inputActions.Player.Jump.performed += ctx => Jump();
 
         if (archer != null)
         {
@@ -132,11 +130,17 @@ public class BasicMovement : MonoBehaviour
 
     private void CheckIfGrounded()
     {
-        isGrounded = Physics.Raycast(transform.position+Vector3.up*1f, Vector3.down, 2f);
+        Vector3 origin = transform.position + groundCheckOffset;
+
+        isGrounded = Physics.SphereCast(origin, groundCheckRadius, Vector3.down, out RaycastHit hit, groundCheckDistance, groundLayer);
+
         if (isGrounded)
         {
             currentJumps = 0;
         }
+
+        // Görsel kontrol için çizim
+        Debug.DrawRay(origin, Vector3.down * groundCheckDistance, isGrounded ? Color.green : Color.red);
     }
 
     public InputSystem_Actions GetInputActions()
@@ -147,11 +151,6 @@ public class BasicMovement : MonoBehaviour
     public void SetCanMove(bool value)
     {
         canMove = value;
-    }
-
-    public void SetCanGetInput(bool value)
-    {
-        canGetInput = value;
     }
 
     public Rigidbody GetRigidbody()

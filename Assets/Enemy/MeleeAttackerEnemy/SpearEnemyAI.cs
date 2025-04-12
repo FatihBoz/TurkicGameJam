@@ -23,7 +23,7 @@ public class SpearEnemyAI : MonoBehaviour
     private State currentState;
     
 
-    void Start()
+    void Awake()
     {
         GetPatrolPoints();
         agent = GetComponent<NavMeshAgent>();

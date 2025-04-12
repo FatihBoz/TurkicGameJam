@@ -27,8 +27,6 @@ public class Charmer : MonoBehaviour
 
                 // Hafif bir çekim kuvveti uygula
                 rb.AddForce(direction * pullForce, ForceMode.Force); // daha güçlüdür
-
-
             }
         }
     }

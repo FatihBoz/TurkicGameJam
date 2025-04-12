@@ -147,7 +147,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 2f0e36d5b42f2004d96c25f0dd39f7e6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -7.28
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2f0e36d5b42f2004d96c25f0dd39f7e6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -155,7 +155,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2f0e36d5b42f2004d96c25f0dd39f7e6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.437
+      value: -17.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2f0e36d5b42f2004d96c25f0dd39f7e6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -253,6 +253,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2f0e36d5b42f2004d96c25f0dd39f7e6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8521855363148026656}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2f0e36d5b42f2004d96c25f0dd39f7e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4680557481993575718}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2f0e36d5b42f2004d96c25f0dd39f7e6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6406840823553614513}
   m_SourcePrefab: {fileID: 100100000, guid: 2f0e36d5b42f2004d96c25f0dd39f7e6, type: 3}
 --- !u!1 &1568651680171494509 stripped
 GameObject:
@@ -346,8 +352,11 @@ MonoBehaviour:
     m_Bits: 256
   moveSpeed: 5
   rotationSpeed: 10
-  jumpForce: 7
-  maxJumps: 2
+  groundCheckRadius: 0.2
+  groundCheckDistance: 0.3
+  groundCheckOffset: {x: 0, y: 0.1, z: 0}
+  jumpForce: 5
+  maxJumps: 1
 --- !u!114 &8521855363148026656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,6 +375,35 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   isCasting: 0
+--- !u!114 &4680557481993575718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568651680171494509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b884f048a0c4e242bb09e02fde8534e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  dashForce: 20
+  dashDuration: 0.2
+  dashCooldown: 1
+  dashTrailPrefab: {fileID: 4864944293383124153, guid: 060f9cc34c70c704ebe806b61487b862, type: 3}
+--- !u!114 &6406840823553614513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568651680171494509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b6917c072fec54cb1b305bbdbe356e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2202023585592202967 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2f0e36d5b42f2004d96c25f0dd39f7e6, type: 3}

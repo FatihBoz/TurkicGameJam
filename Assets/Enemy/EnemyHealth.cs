@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IDamageReceiver
 {
-    public float health = 100f;
+    [SerializeField]
+    private float health = 100f;
 
     public void TakeDamage(float amount)
     {

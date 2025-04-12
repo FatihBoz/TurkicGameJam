@@ -22,17 +22,11 @@ public class DashTrail : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("Trigger entered: " + other.gameObject.name);
-        print("Trigger layer: " + other.gameObject.layer);
-        print("Enemy layer mask: " + enemyLayer.value);
-
         if ((enemyLayer.value & (1 << other.gameObject.layer)) != 0)
         {
-            print("Hit enemy: " + other.gameObject.name);
             EnemyHealth enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
-                print("Damaging enemy: " + other.gameObject.name);
                 enemyHealth.TakeDamage(damageAmount);
             }
             Destroy(gameObject);
