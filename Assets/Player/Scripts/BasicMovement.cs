@@ -55,11 +55,11 @@ public class BasicMovement : MonoBehaviour
     {
         CheckIfGrounded();
 
-        animator.SetBool("isMoving", rb.linearVelocity != Vector3.zero);
+        animator.SetBool("isMoving", rb.linearVelocity.x != 0 || rb.linearVelocity.z != 0);
 
         if (!canMove)
         {
-            rb.linearVelocity = Vector3.zero;
+            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y,0);
             return;
         }
 
