@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using UnityEditor.Searcher;
 using UnityEngine;
 
@@ -26,8 +27,17 @@ public class ConeRaycaster : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P)) // test için
         {
             print("Pye basýldý");
-            CastConeRays();
+            CastSkill();
         }
+    }
+
+    private async void CastSkill()
+    {
+        GameObject tempObj = Instantiate(skillEffect, archer.GetShootPoint().position, Quaternion.identity);
+        tempObj.transform.SetParent(archer.GetShootPoint().parent);
+        await Task.Delay(1000);
+        CastConeRays();
+        Destroy(tempObj);
     }
 
     void CastConeRays()
