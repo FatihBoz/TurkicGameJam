@@ -3,7 +3,12 @@ guid: c34e9b2c66965ed408d15c519685a3f3
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sword_Blinn
+    second: {fileID: 2100000, guid: ae1d7eeb7f9265a43a4a034126a4fea3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -14,6 +14,11 @@ public class ComboSystem : MonoBehaviour
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField] private Transform attackPoint;
     
+    [Header("Knockback Settings")]
+    [SerializeField] private float firstAttackKnockback = 5f;
+    [SerializeField] private float secondAttackKnockback = 10f;
+    [SerializeField] private float knockbackUpwardForce = 2f;
+    
     // Combo state
     private bool firstAttack = false;
     private bool secondAttack = false;
@@ -30,11 +35,11 @@ public class ComboSystem : MonoBehaviour
     
     private void Update()
     {
-
         if (Input.GetButtonDown("Fire1") || Input.GetMouseButtonDown(0))
         {
             PerformAttack();
         }
+
         animator.SetBool("firstAttack",firstAttack);
         animator.SetBool("secondAttack",secondAttack);
     }
@@ -68,16 +73,16 @@ public class ComboSystem : MonoBehaviour
     // Called from animation event during first attack animation
     public void DealFirstAttackDamage()
     {
-        DealDamageInArea(firstAttackDamage);
+        DealDamageInArea(firstAttackDamage, firstAttackKnockback);
     }
     
     // Called from animation event during second attack animation
     public void DealSecondAttackDamage()
     {
-        DealDamageInArea(secondAttackDamage);
+        DealDamageInArea(secondAttackDamage, secondAttackKnockback);
     }
     
-    private void DealDamageInArea(float damageAmount)
+    private void DealDamageInArea(float damageAmount, float knockbackForce)
     {
         // Detect enemies in range
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
@@ -89,7 +94,24 @@ public class ComboSystem : MonoBehaviour
             if (enemyHealth != null)
             {
                 enemyHealth.TakeDamage(damageAmount);
+                ApplyKnockback(enemy.transform, knockbackForce);
             }
+        }
+    }
+    
+    private void ApplyKnockback(Transform target, float knockbackForce)
+    {
+        Rigidbody rb = target.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            // Calculate direction from player to enemy
+            Vector3 direction = (target.position - transform.position).normalized;
+            
+            // Add upward force for better visual effect
+            direction.y += knockbackUpwardForce;
+            
+            // Apply the knockback force
+            rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
         }
     }
     
