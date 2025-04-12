@@ -20,7 +20,7 @@ public class Charmer : MonoBehaviour
             {
                 print("Rigidbody: " + rb.name);
                 // Bu scriptin baðlý olduðu objeye doðru yön
-                Vector3 direction = (transform.position - rb.position).normalized;
+                Vector3 direction = new Vector3(transform.position.x - rb.position.x, 0, transform.position.z - rb.position.z);
 
                 // Hafif bir çekim kuvveti uygula
                 rb.AddForce(direction * pullForce, ForceMode.Force); // daha güçlüdür
