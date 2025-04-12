@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    [SerializeField] private GameObject hitEffect;
     [SerializeField] protected float speed = 10f;
     [SerializeField] protected float lifetime = 1.5f;
 
@@ -18,5 +19,17 @@ public class Projectile : MonoBehaviour
         }
 
         transform.Translate(speed * Time.deltaTime * Vector3.forward);
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("Collision detected with: " + collision.gameObject.name);
+        if(collision.gameObject.TryGetComponent(out IDamageReceiver damageReceiver))
+        {
+            Destroy(Instantiate(hitEffect, transform.position, Quaternion.identity), 1f);
+            damageReceiver.TakeDamage(10f);
+            Destroy(gameObject);
+        }
     }
 }

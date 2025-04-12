@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e1f09626816d334da0494fcc2b26bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitEffect: {fileID: 7597130086695848811, guid: 6859d482023077d42876f287792d6d2e, type: 3}
   speed: 10
   lifetime: 1.5
   waitingTimeUntilFollow: 0.5

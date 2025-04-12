@@ -23,6 +23,7 @@ public class Archer : MonoBehaviour
 
     public void ArrowInstantiateAnimationMethod()
     {
+        print("animation event");
         Instantiate(arrowPrefab, shootPoint.position, transform.rotation);
         if(playerMovement != null)
         {

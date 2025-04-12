@@ -68,17 +68,18 @@ public class SerpentArrowCaster : Skill
 
             Vector3 direction = Quaternion.Euler(0, angle, 0) * transform.forward;
 
-            Vector3 tempDir = new(transform.position.x, transform.position.y + 1f, transform.position.z);//rayler çok aþaðýda kalýyor
-
+            Vector3 tempDir = new(transform.position.x, transform.position.y, transform.position.z);//rayler çok aþaðýda kalýyor;
             if (Physics.Raycast(tempDir, direction, out RaycastHit hit, rayDistance, enemyLayer))
             {
-                float offSetAngle = 20f * currentProjectiles;
-                if(currentProjectiles % 2 == 0)
+                
+                float offSetAngle = 15f * currentProjectiles;
+                if (currentProjectiles % 2 == 0)
                 {
-                    offSetAngle *= -1;   // Bir saða bir sola mermi atmak için
+                    offSetAngle *= -1;// Bir saða bir sola mermi atmak için
+                    
                 }
 
-                Vector3 dir = Quaternion.Euler(0,offSetAngle,0) * transform.forward;
+                Vector3 dir = Quaternion.Euler(0,offSetAngle - 90,0) * transform.forward;
 
                 SerpentArrow tempProjectile = Instantiate(projectilePrefab, Archer.Instance.GetShootPoint().position, Archer.Instance.GetShootPoint().rotation);
                 tempProjectile.SetTarget(hit.transform);
