@@ -119,6 +119,7 @@ public class BasicMovement : MonoBehaviour
             }
         }
     }
+    
 
     private void Jump()
     {
@@ -131,8 +132,6 @@ public class BasicMovement : MonoBehaviour
 
     private void CheckIfGrounded()
     {
-        print("Checking if grounded : " + currentJumps);
-
         isGrounded = Physics.Raycast(transform.position+Vector3.up*1f, Vector3.down, 2f);
         if (isGrounded)
         {

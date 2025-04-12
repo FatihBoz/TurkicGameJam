@@ -2,18 +2,23 @@ using UnityEngine;
 
 public class Charmer : MonoBehaviour
 {
+    public Transform player;
+
     public float radius = 5f;
     public float pullForce = 5f;
     public LayerMask playerLayer;
 
+    Rigidbody rb;
+
+    private void Awake()
+    {
+        rb = player.GetComponent<Rigidbody>();
+    }
+
     void FixedUpdate()
     {
-        // Belirli bir yarýçapta collider'larý bul
-        Collider[] colliders = Physics.OverlapSphere(transform.position, radius, playerLayer);
-
-        foreach (Collider col in colliders)
+        if(5f > Vector3.Distance(player.transform.position, transform.position))
         {
-            Rigidbody rb = col.attachedRigidbody;
 
             if (rb != null)
             {
