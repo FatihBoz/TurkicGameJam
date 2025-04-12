@@ -5,7 +5,7 @@ public class Archer : MonoBehaviour
     [SerializeField] private Projectile arrowPrefab;
     [SerializeField] private Transform shootPoint;
 
-    private PlayerMovement playerMovement;
+    private BasicMovement playerMovement;
     public void ArrowInstantiateAnimationMethod()
     {
         Instantiate(arrowPrefab, shootPoint.position, Quaternion.identity);
@@ -15,7 +15,7 @@ public class Archer : MonoBehaviour
         }
     }
 
-    public void Attack(PlayerMovement movement)
+    public void Attack(BasicMovement movement)
     {
         print("attack");
         playerMovement = movement;
