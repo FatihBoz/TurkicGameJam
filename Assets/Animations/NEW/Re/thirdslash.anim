@@ -87274,7 +87274,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.4
+  - time: 1.7333333
     functionName: AfterThirdAttack
     data: 
     objectReferenceParameter: {fileID: 0}
