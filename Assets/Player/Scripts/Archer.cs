@@ -6,6 +6,7 @@ public class Archer : MonoBehaviour
     [SerializeField] private Transform shootPoint;
 
     private PlayerMovement playerMovement;
+    private bool attackingBuffer = true;
     public void ArrowInstantiateAnimationMethod()
     {
         Instantiate(arrowPrefab, shootPoint.position, Quaternion.identity);
@@ -13,14 +14,21 @@ public class Archer : MonoBehaviour
         {
             playerMovement.SetCanMove(true);
         }
+        attackingBuffer = true;
     }
 
     public void Attack(PlayerMovement movement)
     {
-        print("attack");
-        playerMovement = movement;
-        playerMovement.PlayAnimation("ArrowAttack");
-        playerMovement.SetCanMove(false);
+
+        if (attackingBuffer)
+        {
+            playerMovement = movement;
+            playerMovement.PlayAnimation("ArrowAttack");
+            playerMovement.SetCanMove(false);
+            attackingBuffer = false;
+        }
+
+
 
     }
 }
