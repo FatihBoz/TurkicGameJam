@@ -34,7 +34,6 @@ public class ThrustSkill : MonoBehaviour
     private bool canThrust = true;
     private bool isThrustActive = false;
     private float cooldownTimer = 0f;
-    private InputSystem_Actions inputActions;
     private Rigidbody rb;
     
     private void Awake()
@@ -49,21 +48,6 @@ public class ThrustSkill : MonoBehaviour
             attackPoint = transform;
             
         rb = GetComponent<Rigidbody>();
-        inputActions = new InputSystem_Actions();
-    }
-    
-    private void OnEnable()
-    {
-        inputActions.Player.Enable();
-        // Add thrust input binding (Q key)
-        AddThrustInputListener();
-    }
-    
-    private void OnDisable()
-    {
-        // Clean up
-        RemoveThrustInputListener();
-        inputActions.Player.Disable();
     }
     
     private void Update()
@@ -79,17 +63,7 @@ public class ThrustSkill : MonoBehaviour
             }
         }
     }
-    
-    private void AddThrustInputListener()
-    {
-        // Legacy input detection in Update since it's not in the InputSystem_Actions
-        // We'll implement it in the InputLegacy() method
-    }
-    
-    private void RemoveThrustInputListener()
-    {
-        // Nothing to remove for legacy input
-    }
+
     
     // Called every frame to check for legacy input
     private void InputLegacy()

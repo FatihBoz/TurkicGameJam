@@ -12,6 +12,7 @@ public class ComboSystem : MonoBehaviour
     [Header("Attack Settings")]
     [SerializeField] private float firstAttackDamage = 20f;
     [SerializeField] private float secondAttackDamage = 35f;
+    [SerializeField] private float thirdAttackDamage = 50f;
     [SerializeField] private float attackRange = 2f;
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField] private Transform attackPoint;
@@ -19,6 +20,7 @@ public class ComboSystem : MonoBehaviour
     [Header("Knockback Settings")]
     [SerializeField] private float firstAttackKnockback = 5f;
     [SerializeField] private float secondAttackKnockback = 10f;
+    [SerializeField] private float thirdAttackKnockback = 15f;
     [SerializeField] private float knockbackUpwardForce = 2f;
     
     [Header("Hit Stop Settings")]
@@ -37,6 +39,7 @@ public class ComboSystem : MonoBehaviour
     // Combo state
     private bool firstAttack = false;
     private bool secondAttack = false;
+    private bool thirdAttack = false;
     private bool isGroundSlamming = false;
     private Rigidbody rb;
     
@@ -67,6 +70,7 @@ public class ComboSystem : MonoBehaviour
 
         animator.SetBool("firstAttack", firstAttack);
         animator.SetBool("secondAttack", secondAttack);
+        animator.SetBool("thirdAttack", thirdAttack);
     }
     
     private bool CheckForGroundSlam()
@@ -86,7 +90,6 @@ public class ComboSystem : MonoBehaviour
         animator.SetBool("groundSlamming",true);
         playerMovement.SetCanMove(false);
 
-        
         // Apply downward force for quick landing
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
         rb.AddForce(Vector3.down * groundSlamForce, ForceMode.Impulse);
@@ -160,15 +163,19 @@ public class ComboSystem : MonoBehaviour
     
     private void PerformAttack()
     {
-        if (!firstAttack && !secondAttack)
+        if (!firstAttack && !secondAttack && !thirdAttack)
         {
             firstAttack = true;
             playerMovement.SetCanMove(false);
         }
-        else if (firstAttack && !secondAttack)
+        else if (firstAttack && !secondAttack && !thirdAttack)
         {
             secondAttack = true;
-        }  
+        }
+        else if (firstAttack && secondAttack && !thirdAttack)
+        {
+            thirdAttack = true;
+        }
     }
     
     public void AfterFirstAttack()
@@ -182,6 +189,17 @@ public class ComboSystem : MonoBehaviour
     
     public void AfterSecondAttack()
     {
+        if (!thirdAttack)
+        {
+            secondAttack = false;
+            firstAttack = false;
+            playerMovement.SetCanMove(true);
+        }
+    }
+    
+    public void AfterThirdAttack()
+    {
+        thirdAttack = false;
         secondAttack = false;
         firstAttack = false;
         playerMovement.SetCanMove(true);
@@ -201,6 +219,16 @@ public class ComboSystem : MonoBehaviour
     public void DealSecondAttackDamage()
     {
         bool hitSomething = DealDamageInArea(secondAttackDamage, secondAttackKnockback);
+        if (hitSomething && useHitStop)
+        {
+            DoHitStop();
+        }
+    }
+    
+    // Called from animation event during third attack animation
+    public void DealThirdAttackDamage()
+    {
+        bool hitSomething = DealDamageInArea(thirdAttackDamage, thirdAttackKnockback);
         if (hitSomething && useHitStop)
         {
             DoHitStop();
