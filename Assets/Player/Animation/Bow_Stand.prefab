@@ -1,0 +1,210 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3757369153016269633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6732028171631506870}
+  m_Layer: 0
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6732028171631506870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3757369153016269633}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 19.49, y: 1.7836502, z: 1.9803007}
+  m_LocalScale: {x: 2.043, y: 2.043, z: 2.043}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3977376026936024412}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7810950600933509006
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4594274181687830308}
+  - component: {fileID: 354624838155206157}
+  m_Layer: 0
+  m_Name: SerpentArrowCaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4594274181687830308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7810950600933509006}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 19.49, y: 0.66, z: 1.1018106}
+  m_LocalScale: {x: 2.043, y: 2.043, z: 2.043}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3977376026936024412}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &354624838155206157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7810950600933509006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd9810edc35f7444a9503d3e277090c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTime: 8
+  skillBar: {fileID: 0}
+  projectilePrefab: {fileID: 5257942848873276042, guid: 836870c21f3f0b64eaab370e1acddacf, type: 3}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  skillEffect: {fileID: 5988827261509339189, guid: b192cbbc9b0a05b4489ba2e141e2c5dc, type: 3}
+  maxProjectiles: 5
+  rayCount: 15
+  coneAngle: 60
+  rayDistance: 10
+--- !u!1 &8973846974623884213
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8939907564810588681}
+  - component: {fileID: 3852798004729469007}
+  m_Layer: 0
+  m_Name: ChargedBowAttack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8939907564810588681
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973846974623884213}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 19.49, y: 0.66, z: 1.1018106}
+  m_LocalScale: {x: 2.043, y: 2.043, z: 2.043}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3977376026936024412}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3852798004729469007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973846974623884213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdc3a17ab29648458e56dcb4472b12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldownTime: 8
+  skillBar: {fileID: 0}
+  projectilePrefab: {fileID: 7387677746529748338, guid: 63de215d0f95ca04e9a539c707ec3164, type: 3}
+  chargeEffectPrefab: {fileID: 7437810868741175512, guid: 78cc5b119814ac448928d96f4b99967a, type: 3}
+  chargeTime: 2
+  waitingTimeBetweenArrows: 0.25
+  maxArrows: 5
+--- !u!1001 &3510770387737672375
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a2a13c8d3e6d69a4eb1f0a69bdf6f4a8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2a13c8d3e6d69a4eb1f0a69bdf6f4a8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2a13c8d3e6d69a4eb1f0a69bdf6f4a8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2a13c8d3e6d69a4eb1f0a69bdf6f4a8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2a13c8d3e6d69a4eb1f0a69bdf6f4a8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2a13c8d3e6d69a4eb1f0a69bdf6f4a8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2a13c8d3e6d69a4eb1f0a69bdf6f4a8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2a13c8d3e6d69a4eb1f0a69bdf6f4a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2a13c8d3e6d69a4eb1f0a69bdf6f4a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a2a13c8d3e6d69a4eb1f0a69bdf6f4a8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a2a13c8d3e6d69a4eb1f0a69bdf6f4a8, type: 3}
+      propertyPath: m_Name
+      value: Bow_Stand
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: a2a13c8d3e6d69a4eb1f0a69bdf6f4a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4594274181687830308}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: a2a13c8d3e6d69a4eb1f0a69bdf6f4a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8939907564810588681}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: a2a13c8d3e6d69a4eb1f0a69bdf6f4a8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6732028171631506870}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a2a13c8d3e6d69a4eb1f0a69bdf6f4a8, type: 3}
+--- !u!4 &3977376026936024412 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a2a13c8d3e6d69a4eb1f0a69bdf6f4a8, type: 3}
+  m_PrefabInstance: {fileID: 3510770387737672375}
+  m_PrefabAsset: {fileID: 0}

@@ -42,6 +42,7 @@ public class SerpentArrowCaster : Skill
 
     private async void CastSkill()
     {
+        print("skill cast");
         //COROUTINE YAZILACAK
         SkillVisual tempObj = Instantiate(skillEffect, Archer.Instance.GetShootPoint().position, Quaternion.identity);
         tempObj.transform.SetParent(Archer.Instance.GetShootPoint().parent);
