@@ -22,6 +22,9 @@ public class BasicMovement : MonoBehaviour
 
     private bool canMove = true;
 
+    private bool canGetInput = true;
+
+
 
     private void Awake()
     {
@@ -141,6 +144,11 @@ public class BasicMovement : MonoBehaviour
     public void SetCanMove(bool value)
     {
         canMove = value;
+    }
+
+    public void SetCanGetInput(bool value)
+    {
+        canGetInput = value;
     }
 
     public Rigidbody GetRigidbody()
