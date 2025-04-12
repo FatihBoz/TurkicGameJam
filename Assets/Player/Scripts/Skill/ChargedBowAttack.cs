@@ -4,7 +4,7 @@ using UnityEngine;
 public class ChargedBowAttack : MonoBehaviour
 {
     [SerializeField] private Projectile projectilePrefab;
-    [SerializeField] private GameObject chargeEffectPrefab;
+    [SerializeField] private SkillVisual chargeEffectPrefab;
     [SerializeField] private float chargeTime = 2f;
     [SerializeField] private float waitingTimeBetweenArrows = 0.25f;
     [SerializeField] private int maxArrows = 3;
@@ -35,8 +35,9 @@ public class ChargedBowAttack : MonoBehaviour
     private IEnumerator ConsequentArrows()
     {
         //-----------------------------------CHARGE-----------------------------------
-        GameObject chargeObj = Instantiate(chargeEffectPrefab, archer.GetShootPoint().position, Quaternion.identity);
+        SkillVisual chargeObj = Instantiate(chargeEffectPrefab, archer.GetShootPoint().position, Quaternion.identity);
         chargeObj.transform.SetParent(archer.GetShootPoint().parent);
+        chargeObj.Initialize(chargeTime);
         yield return new WaitForSeconds(chargeTime);
         Destroy(chargeObj);
 

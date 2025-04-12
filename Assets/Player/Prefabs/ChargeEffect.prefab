@@ -9686,6 +9686,7 @@ GameObject:
   - component: {fileID: 2051671042953046783}
   - component: {fileID: 508550194940192222}
   - component: {fileID: 7818622391073710302}
+  - component: {fileID: 7437810868741175512}
   m_Layer: 0
   m_Name: ChargeEffect
   m_TagString: Untagged
@@ -14510,3 +14511,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &7437810868741175512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6900890310693115367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 781540b55512ef9499998ca51f0c2a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endScale: 0.08

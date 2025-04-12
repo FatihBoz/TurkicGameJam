@@ -1,13 +1,12 @@
 using System.Threading.Tasks;
-using UnityEditor.Searcher;
 using UnityEngine;
 
-public class ConeRaycaster : MonoBehaviour
+public class SerpentArrowCaster : MonoBehaviour
 {
     [Header("Projectile")]
-    [SerializeField] private SerpentArrows projectilePrefab;
+    [SerializeField] private SerpentArrow projectilePrefab;
     [SerializeField] private LayerMask enemyLayer;
-    [SerializeField] private GameObject skillEffect;
+    [SerializeField] private SkillVisual skillEffect;
     [SerializeField] private int maxProjectiles = 3;
 
     [Header("Rays")]
@@ -33,8 +32,9 @@ public class ConeRaycaster : MonoBehaviour
 
     private async void CastSkill()
     {
-        GameObject tempObj = Instantiate(skillEffect, archer.GetShootPoint().position, Quaternion.identity);
+        SkillVisual tempObj = Instantiate(skillEffect, archer.GetShootPoint().position, Quaternion.identity);
         tempObj.transform.SetParent(archer.GetShootPoint().parent);
+        tempObj.Initialize(1f); 
         await Task.Delay(1000);
         CastConeRays();
         Destroy(tempObj);
@@ -60,12 +60,12 @@ public class ConeRaycaster : MonoBehaviour
                 float offSetAngle = 20f * currentProjectiles;
                 if(currentProjectiles % 2 == 0)
                 {
-                    offSetAngle *= -1;
+                    offSetAngle *= -1;   // Bir saða bir sola mermi atmak için
                 }
 
                 Vector3 dir = Quaternion.Euler(0,offSetAngle,0) * transform.forward;
 
-                SerpentArrows tempProjectile = Instantiate(projectilePrefab, archer.GetShootPoint().position, archer.GetShootPoint().rotation);
+                SerpentArrow tempProjectile = Instantiate(projectilePrefab, archer.GetShootPoint().position, archer.GetShootPoint().rotation);
                 tempProjectile.SetTarget(hit.transform);
                 tempProjectile.transform.rotation = Quaternion.LookRotation(dir);
 

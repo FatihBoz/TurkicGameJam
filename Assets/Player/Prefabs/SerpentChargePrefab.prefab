@@ -4853,6 +4853,7 @@ GameObject:
   - component: {fileID: 2099143143998114055}
   - component: {fileID: 8193914667921042751}
   - component: {fileID: 4451485148274114790}
+  - component: {fileID: 5988827261509339189}
   m_Layer: 0
   m_Name: SerpentChargePrefab
   m_TagString: Untagged
@@ -9677,6 +9678,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &5988827261509339189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6241469479327200128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 781540b55512ef9499998ca51f0c2a09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endScale: 0.075
 --- !u!1 &6931446860797564262
 GameObject:
   m_ObjectHideFlags: 0

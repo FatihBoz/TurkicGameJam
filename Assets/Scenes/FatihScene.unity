@@ -379,7 +379,7 @@ PrefabInstance:
     - target: {fileID: 364261667440347255, guid: ad779ae5de0f2f04fa84f92182047537, type: 3}
       propertyPath: skillEffect
       value: 
-      objectReference: {fileID: 6241469479327200128, guid: b192cbbc9b0a05b4489ba2e141e2c5dc, type: 3}
+      objectReference: {fileID: 5988827261509339189, guid: b192cbbc9b0a05b4489ba2e141e2c5dc, type: 3}
     - target: {fileID: 364261667440347255, guid: ad779ae5de0f2f04fa84f92182047537, type: 3}
       propertyPath: maxProjectiles
       value: 5
@@ -388,6 +388,10 @@ PrefabInstance:
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 5257942848873276042, guid: 836870c21f3f0b64eaab370e1acddacf, type: 3}
+    - target: {fileID: 2303724069926285528, guid: ad779ae5de0f2f04fa84f92182047537, type: 3}
+      propertyPath: chargeEffectPrefab
+      value: 
+      objectReference: {fileID: 7437810868741175512, guid: 78cc5b119814ac448928d96f4b99967a, type: 3}
     - target: {fileID: 6237069871083506871, guid: ad779ae5de0f2f04fa84f92182047537, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

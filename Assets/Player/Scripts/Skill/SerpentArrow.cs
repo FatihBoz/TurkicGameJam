@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class SerpentArrows : Projectile
+public class SerpentArrow : Projectile
 {
     [SerializeField] private float waitingTimeUntilFollow = 0.5f;
     private float elapsedTimeAfterInstantiate = 0f;

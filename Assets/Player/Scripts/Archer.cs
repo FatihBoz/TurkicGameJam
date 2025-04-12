@@ -1,21 +1,27 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Archer : MonoBehaviour
 {
+    private List<Skill> skillList;
+
     [SerializeField] private Projectile arrowPrefab;
     [SerializeField] private Transform shootPoint;
     [SerializeField] private LayerMask groundLayer;
 
+    private int maxSkillCount = 3;
     private bool attackingBuffer = true;
     private BasicMovement playerMovement;
     private ChargedBowAttack chargedBowAttack;
-    ConeRaycaster coneRaycaster;
+    SerpentArrowCaster coneRaycaster;
     private bool isCasting = false;
 
 
     public void Initialize(BasicMovement movement)
     {
         playerMovement = movement;
+        skillList = new List<Skill>(maxSkillCount);
 
         chargedBowAttack = GetComponent<ChargedBowAttack>();
         if (chargedBowAttack != null)
@@ -23,13 +29,22 @@ public class Archer : MonoBehaviour
             chargedBowAttack.Initialize(this);
         }
 
-        coneRaycaster = GetComponent<ConeRaycaster>();
+        coneRaycaster = GetComponent<SerpentArrowCaster>();
         if (coneRaycaster != null)
         {
             coneRaycaster.Initialize(this);
         }
     }
- 
+
+    public void AssignSkill(Skill skill)
+    {
+        if (skillList.Count < maxSkillCount)
+        {
+            skillList.Add(skill);
+            skill.Initialize(this);
+        }
+    }   
+
 
 
     public void ArrowInstantiateAnimationMethod()
