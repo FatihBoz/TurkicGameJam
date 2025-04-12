@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using UnityEngine;
 
-public class SerpentArrowCaster : MonoBehaviour
+public class SerpentArrowCaster : Skill
 {
     [Header("Projectile")]
     [SerializeField] private SerpentArrow projectilePrefab;
@@ -14,28 +14,27 @@ public class SerpentArrowCaster : MonoBehaviour
     [SerializeField] float coneAngle = 60f;
     [SerializeField] float rayDistance = 10f;
 
-    private Archer archer;
-
-    public void Initialize(Archer archer)
+    private void Update()
     {
-        this.archer = archer;
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P)) // test için
+        if (Input.GetKeyDown(KeyCode.E) && !Archer.Instance.isCasting)
         {
-            print("Pye basýldý");
+            Archer.Instance.SetCasting(true);
+            Archer.Instance.SetAttackingBuffer(false);
+            Archer.Instance.isCasting = true;
             CastSkill();
         }
     }
 
     private async void CastSkill()
     {
-        SkillVisual tempObj = Instantiate(skillEffect, archer.GetShootPoint().position, Quaternion.identity);
-        tempObj.transform.SetParent(archer.GetShootPoint().parent);
+
+        SkillVisual tempObj = Instantiate(skillEffect, Archer.Instance.GetShootPoint().position, Quaternion.identity);
+        tempObj.transform.SetParent(Archer.Instance.GetShootPoint().parent);
         tempObj.Initialize(1f); 
         await Task.Delay(1000);
+        Archer.Instance.SetCasting(false);
+        Archer.Instance.SetAttackingBuffer(true);
+        Archer.Instance.isCasting = false;
         CastConeRays();
         Destroy(tempObj);
     }
@@ -65,7 +64,7 @@ public class SerpentArrowCaster : MonoBehaviour
 
                 Vector3 dir = Quaternion.Euler(0,offSetAngle,0) * transform.forward;
 
-                SerpentArrow tempProjectile = Instantiate(projectilePrefab, archer.GetShootPoint().position, archer.GetShootPoint().rotation);
+                SerpentArrow tempProjectile = Instantiate(projectilePrefab, Archer.Instance.GetShootPoint().position, Archer.Instance.GetShootPoint().rotation);
                 tempProjectile.SetTarget(hit.transform);
                 tempProjectile.transform.rotation = Quaternion.LookRotation(dir);
 
@@ -78,8 +77,6 @@ public class SerpentArrowCaster : MonoBehaviour
 
         }
     }
-
-
 
 }
 

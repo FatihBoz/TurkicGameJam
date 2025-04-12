@@ -34,7 +34,6 @@ public class ThrustSkill : MonoBehaviour
     private bool canThrust = true;
     private bool isThrustActive = false;
     private float cooldownTimer = 0f;
-    private InputSystem_Actions inputActions;
     private Rigidbody rb;
     
     private void Awake()

@@ -1,49 +1,23 @@
-using NUnit.Framework;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Archer : MonoBehaviour
 {
-    private List<Skill> skillList;
+    public static Archer Instance { get; private set; }
 
     [SerializeField] private Projectile arrowPrefab;
     [SerializeField] private Transform shootPoint;
     [SerializeField] private LayerMask groundLayer;
 
-    private int maxSkillCount = 3;
     private bool attackingBuffer = true;
     private BasicMovement playerMovement;
-    private ChargedBowAttack chargedBowAttack;
-    SerpentArrowCaster coneRaycaster;
-    private bool isCasting = false;
+    public bool isCasting = false;
 
 
     public void Initialize(BasicMovement movement)
     {
+        Instance = this;
         playerMovement = movement;
-        skillList = new List<Skill>(maxSkillCount);
-
-        chargedBowAttack = GetComponent<ChargedBowAttack>();
-        if (chargedBowAttack != null)
-        {
-            chargedBowAttack.Initialize(this);
-        }
-
-        coneRaycaster = GetComponent<SerpentArrowCaster>();
-        if (coneRaycaster != null)
-        {
-            coneRaycaster.Initialize(this);
-        }
     }
-
-    public void AssignSkill(Skill skill)
-    {
-        if (skillList.Count < maxSkillCount)
-        {
-            skillList.Add(skill);
-            skill.Initialize(this);
-        }
-    }   
 
 
 

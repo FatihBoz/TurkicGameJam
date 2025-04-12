@@ -1,36 +1,14 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
+[DefaultExecutionOrder(-1)]
 public class SkillManager : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> archerSkillPrefabs;
+    [SerializeField] private List<Skill> skills;
+    private int listIndex = 0;
 
-    private Dictionary<GameObject, bool> skillDict;
-    private Archer archer;
-
-    private void Awake()
+    private void Start()
     {
-        foreach (GameObject skillPrefab in archerSkillPrefabs)
-        {
-            skillDict.Add(skillPrefab, false);
-        }
-    }
 
-    public void EarnSkill(Skill skill)
-    {
-        //Alýnacak skill kaldý mý diye kontrol et
-        int r = Random.Range(0, skillDict.Count);
-        while (skillDict.Keys.ElementAt(r) != true)
-        {
-            r = Random.Range(0, skillDict.Count);   
-        }
-        
-
-        GameObject randomSkillPrefab = skillDict.Keys.ElementAt(r);
-        skillDict[randomSkillPrefab] = true;
-
-        Instantiate(randomSkillPrefab, archer.transform);
-        archer.AssignSkill(skill);
     }
 }
