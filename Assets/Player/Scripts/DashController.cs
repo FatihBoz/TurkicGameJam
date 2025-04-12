@@ -61,7 +61,6 @@ public class DashController : MonoBehaviour
 
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
 
-
         dashDirection = moveInput == Vector3.zero ? transform.forward : moveInput;
         Vector3 start = transform.position;
 

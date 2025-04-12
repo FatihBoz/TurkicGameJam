@@ -53,6 +53,8 @@ public class BasicMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        CheckIfGrounded();
+
         animator.SetBool("isMoving", rb.linearVelocity != Vector3.zero);
 
         if (!canMove)
@@ -64,15 +66,17 @@ public class BasicMovement : MonoBehaviour
         Vector2 moveInput = inputActions.Player.Move.ReadValue<Vector2>();
 
 
-
         if (moveInput != Vector2.zero)
         {
 
-            Vector3 moveDirection = new(moveInput.x, 0f, moveInput.y);
-            rb.linearVelocity = moveDirection * moveSpeed;
+            Vector3 horizontalVelocity = new Vector3(moveInput.x * moveSpeed, rb.linearVelocity.y, moveInput.y * moveSpeed);
+            rb.linearVelocity = horizontalVelocity;
 
-            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+
+            Quaternion targetRotation = Quaternion.LookRotation(horizontalVelocity);
             rb.MoveRotation(targetRotation);
+
+
         }
 
 
@@ -91,6 +95,8 @@ public class BasicMovement : MonoBehaviour
 
     private void CheckIfGrounded()
     {
+        print("Checking if grounded : " + currentJumps);
+
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f); // Yere yak�nsa grounded
         if (isGrounded)
         {
