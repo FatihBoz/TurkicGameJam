@@ -1,0 +1,65 @@
+using System.Collections;
+using UnityEngine;
+
+public class ChargedBowAttack : MonoBehaviour
+{
+    [SerializeField] private Projectile projectilePrefab;
+    [SerializeField] private Transform shootPoint;
+    [SerializeField] private GameObject chargeEffectPrefab;
+    [SerializeField] private float chargeTime = 2f;
+    [SerializeField] private float waitingTimeBetweenArrows = 0.25f;
+    [SerializeField] private int maxArrows = 3;
+    private Archer archer;
+    private bool isCasting = false;
+
+    public void Initialize(Archer archer)
+    {
+        this.archer = archer;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && !archer.IsCasting())
+        {   
+            archer.SetCasting(true);
+            archer.SetAttackingBuffer(false);
+            Charge();
+        }
+
+        if(archer.IsCasting())
+        {
+            
+        }
+    }
+
+    void Charge()
+    {
+        StartCoroutine(ConsequentArrows());
+    }
+
+
+    private IEnumerator ConsequentArrows()
+    {
+        //-----------------------------------CHARGE-----------------------------------
+        GameObject chargeObj = Instantiate(chargeEffectPrefab, shootPoint.position, Quaternion.identity);
+        chargeObj.transform.SetParent(shootPoint.parent);
+        yield return new WaitForSeconds(chargeTime);
+        Destroy(chargeObj);
+
+        //--------------------------------SHOOT-----------------------------------  
+        int arrowCount = 0;
+        while (arrowCount < maxArrows)
+        {
+            Instantiate(projectilePrefab, shootPoint.position, shootPoint.rotation);
+            arrowCount++;
+            yield return new WaitForSeconds(waitingTimeBetweenArrows);
+        }
+
+        isCasting = false;
+        archer.SetAttackingBuffer(true);
+        archer.SetCasting(false);
+        yield return null;
+    }
+
+
+}

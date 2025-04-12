@@ -6,6 +6,10 @@ public class BasicMovement : MonoBehaviour
     private Archer archer;
     private Animator animator;
     private Rigidbody rb;
+    private Vector3 horizontalVelocity;
+
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float rotationSpeed = 10f;
 
     [Header("Jump")]
     [SerializeField] private float jumpForce = 7f;
@@ -13,17 +17,22 @@ public class BasicMovement : MonoBehaviour
     private int currentJumps;
     private bool isGrounded;
 
-    private Ray ray;
     private bool canMove = true;
 
-    [SerializeField] private float moveSpeed = 5f;
 
     private void Awake()
     {
         inputActions = new InputSystem_Actions();
         rb = GetComponent<Rigidbody>();
-        archer = GetComponent<Archer>();
         animator = GetComponent<Animator>();
+
+        archer = GetComponent<Archer>();
+        if (archer != null)
+        {
+            archer.Initialize(this);
+        }
+
+
     }
 
     private void OnEnable()
@@ -49,6 +58,10 @@ public class BasicMovement : MonoBehaviour
         animator.SetTrigger(animName);
     }
 
+    public void PlayAnimation(string animName, bool value)
+    {
+        animator.SetBool(animName, value);
+    }
 
 
     private void FixedUpdate()
@@ -69,20 +82,16 @@ public class BasicMovement : MonoBehaviour
         if (moveInput != Vector2.zero)
         {
 
-            Vector3 horizontalVelocity = new Vector3(moveInput.x * moveSpeed, rb.linearVelocity.y, moveInput.y * moveSpeed);
+            horizontalVelocity = new Vector3(moveInput.x * moveSpeed, rb.linearVelocity.y, moveInput.y * moveSpeed);
             rb.linearVelocity = horizontalVelocity;
-
-
-            Quaternion targetRotation = Quaternion.LookRotation(horizontalVelocity);
-            rb.MoveRotation(targetRotation);
-
-
         }
-
-
-
-
+        else
+        {
+            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
+        }
     }
+
+
 
     private void Jump()
     {
@@ -97,10 +106,10 @@ public class BasicMovement : MonoBehaviour
     {
         print("Checking if grounded : " + currentJumps);
 
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f); // Yere yak�nsa grounded
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
         if (isGrounded)
         {
-            currentJumps = 0; // Zeminle temasta iken z�plama say�s�n� s�f�rla
+            currentJumps = 0;
         }
     }
 
@@ -112,5 +121,15 @@ public class BasicMovement : MonoBehaviour
     public void SetCanMove(bool value)
     {
         canMove = value;
+    }
+
+    public Rigidbody GetRigidbody()
+    {
+        return rb;
+    }
+
+    public Vector3 GetHorizontalVelocity()
+    {
+        return horizontalVelocity;
     }
 }
