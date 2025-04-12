@@ -77,13 +77,12 @@ public class BasicMovement : MonoBehaviour
     {
         CheckIfGrounded();
 
-        animator.SetBool("isMoving", rb.linearVelocity.x != 0 || rb.linearVelocity.z != 0);
-
         Rotate(horizontalVelocity);
 
         if (!canMove)
         {
             rb.linearVelocity = new Vector3(0, rb.linearVelocity.y,0);
+            animator.SetBool("isMoving", rb.linearVelocity.x != 0 || rb.linearVelocity.z != 0);
             return;
         }
 
@@ -91,6 +90,7 @@ public class BasicMovement : MonoBehaviour
 
         if (moveInput != Vector2.zero)
         {
+            
             horizontalVelocity = new Vector3(moveInput.x * moveSpeed, rb.linearVelocity.y, moveInput.y * moveSpeed);
             rb.linearVelocity = horizontalVelocity;
         }
@@ -98,7 +98,8 @@ public class BasicMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
         }
-
+        
+        animator.SetBool("isMoving", rb.linearVelocity.x != 0 || rb.linearVelocity.z != 0);
 
     }
 
