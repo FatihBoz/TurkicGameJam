@@ -129,7 +129,7 @@ public class BasicMovement : MonoBehaviour
     {
         print("Checking if grounded : " + currentJumps);
 
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
+        isGrounded = Physics.Raycast(transform.position+Vector3.up*1f, Vector3.down, 2f);
         if (isGrounded)
         {
             currentJumps = 0;
@@ -154,5 +154,10 @@ public class BasicMovement : MonoBehaviour
     public Rigidbody GetRigidbody()
     {
         return rb;
+    }
+
+    public bool IsGrounded()
+    {
+        return isGrounded;
     }
 }
