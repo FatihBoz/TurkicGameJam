@@ -5,7 +5,6 @@ public class Archer : MonoBehaviour
     [SerializeField] private Projectile arrowPrefab;
     [SerializeField] private Transform shootPoint;
 
-    private PlayerMovement playerMovement;
     private bool attackingBuffer = true;
     private BasicMovement playerMovement;
 

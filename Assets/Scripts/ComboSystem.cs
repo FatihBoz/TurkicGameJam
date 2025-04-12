@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class ComboSystem : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class ComboSystem : MonoBehaviour
     [SerializeField] private float firstAttackKnockback = 5f;
     [SerializeField] private float secondAttackKnockback = 10f;
     [SerializeField] private float knockbackUpwardForce = 2f;
+    
+    [Header("Hit Stop Settings")]
+    [SerializeField] private bool useHitStop = true;
+    [SerializeField] private float hitStopDuration = 0.1f;
+    [SerializeField] private float timeScale = 0.1f;
     
     // Combo state
     private bool firstAttack = false;
@@ -73,16 +79,24 @@ public class ComboSystem : MonoBehaviour
     // Called from animation event during first attack animation
     public void DealFirstAttackDamage()
     {
-        DealDamageInArea(firstAttackDamage, firstAttackKnockback);
+        bool hitSomething = DealDamageInArea(firstAttackDamage, firstAttackKnockback);
+        if (hitSomething && useHitStop)
+        {
+            DoHitStop();
+        }
     }
     
     // Called from animation event during second attack animation
     public void DealSecondAttackDamage()
     {
-        DealDamageInArea(secondAttackDamage, secondAttackKnockback);
+        bool hitSomething = DealDamageInArea(secondAttackDamage, secondAttackKnockback);
+        if (hitSomething && useHitStop)
+        {
+            DoHitStop();
+        }
     }
     
-    private void DealDamageInArea(float damageAmount, float knockbackForce)
+    private bool DealDamageInArea(float damageAmount, float knockbackForce)
     {
         // Detect enemies in range
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
@@ -95,8 +109,11 @@ public class ComboSystem : MonoBehaviour
             {
                 enemyHealth.TakeDamage(damageAmount);
                 ApplyKnockback(enemy.transform, knockbackForce);
+                return true; // We hit at least one enemy
             }
         }
+        
+        return false; // We didn't hit any enemies
     }
     
     private void ApplyKnockback(Transform target, float knockbackForce)
@@ -113,6 +130,29 @@ public class ComboSystem : MonoBehaviour
             // Apply the knockback force
             rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
         }
+    }
+    
+    private void DoHitStop()
+    {
+        StartCoroutine(HitStopCoroutine());
+    }
+    
+    private IEnumerator HitStopCoroutine()
+    {
+        // Store original time scale and set to slow motion
+        float originalTimeScale = Time.timeScale;
+        Time.timeScale = timeScale;
+        
+        // Store original fixed delta time and adjust it
+        float originalFixedDeltaTime = Time.fixedDeltaTime;
+        Time.fixedDeltaTime = Time.fixedDeltaTime * timeScale;
+        
+        // Wait for the hit stop duration
+        yield return new WaitForSecondsRealtime(hitStopDuration);
+        
+        // Restore original time scale and fixed delta time
+        Time.timeScale = originalTimeScale;
+        Time.fixedDeltaTime = originalFixedDeltaTime;
     }
     
     // Optional: Visualize the attack range in the editor
