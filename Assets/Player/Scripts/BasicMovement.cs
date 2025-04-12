@@ -22,6 +22,9 @@ public class BasicMovement : MonoBehaviour
 
     private bool canMove = true;
 
+    private bool canGetInput = true;
+
+
 
     private void Awake()
     {
@@ -126,7 +129,7 @@ public class BasicMovement : MonoBehaviour
     {
         print("Checking if grounded : " + currentJumps);
 
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f);
+        isGrounded = Physics.Raycast(transform.position+Vector3.up*1f, Vector3.down, 2f);
         if (isGrounded)
         {
             currentJumps = 0;
@@ -143,8 +146,18 @@ public class BasicMovement : MonoBehaviour
         canMove = value;
     }
 
+    public void SetCanGetInput(bool value)
+    {
+        canGetInput = value;
+    }
+
     public Rigidbody GetRigidbody()
     {
         return rb;
+    }
+
+    public bool IsGrounded()
+    {
+        return isGrounded;
     }
 }

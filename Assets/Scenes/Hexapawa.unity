@@ -721,6 +721,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c8ee3435f760c34f83799638f4dbe5b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1330904375}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c8ee3435f760c34f83799638f4dbe5b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1330904377}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c8ee3435f760c34f83799638f4dbe5b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1330904378}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c8ee3435f760c34f83799638f4dbe5b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1330904379}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2c8ee3435f760c34f83799638f4dbe5b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1330904380}
   m_SourcePrefab: {fileID: 100100000, guid: 2c8ee3435f760c34f83799638f4dbe5b, type: 3}
 --- !u!1 &1330904372 stripped
 GameObject:
@@ -750,6 +762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1330904376}
+  playerMovement: {fileID: 0}
   firstAttackDamage: 20
   secondAttackDamage: 35
   attackRange: 0.92
@@ -759,7 +772,18 @@ MonoBehaviour:
   attackPoint: {fileID: 1638615472}
   firstAttackKnockback: 1
   secondAttackKnockback: 2
-  knockbackUpwardForce: 0.8
+  knockbackUpwardForce: 0.14
+  useHitStop: 1
+  hitStopDuration: 0.1
+  timeScale: 0.1
+  groundSlamDamage: 50
+  groundSlamRange: 3
+  groundSlamKnockback: 15
+  groundSlamForce: 20
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  slamEffectPrefab: {fileID: 0}
 --- !u!95 &1330904376
 Animator:
   serializedVersion: 7
@@ -782,6 +806,116 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1330904377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330904372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22574418161f85e4c9672784d17951c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  moveSpeed: 2.78
+  rotationSpeed: 10
+  jumpForce: 7
+  maxJumps: 2
+--- !u!54 &1330904378
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330904372}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!65 &1330904379
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330904372}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3022747, y: 1.5560225, z: 0.24712408}
+  m_Center: {x: 0.0020604134, y: 0.87135, z: -0.004431188}
+--- !u!114 &1330904380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330904372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78e2342fb9540bb43b24601f6867823d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrustForce: 15
+  thrustDuration: 0.3
+  thrustCooldown: 2
+  thrustCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  thrustEffectPrefab: {fileID: 0}
+  effectDuration: 0.5
+  playerMovement: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!1 &1638615471
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,7 +1109,7 @@ GameObject:
   - component: {fileID: 2055067444}
   - component: {fileID: 2055067443}
   - component: {fileID: 2055067442}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

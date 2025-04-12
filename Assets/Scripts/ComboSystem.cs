@@ -7,6 +7,7 @@ public class ComboSystem : MonoBehaviour
     
     // Animation references
     [SerializeField] private Animator animator;
+    [SerializeField] private BasicMovement playerMovement;
     
     [Header("Attack Settings")]
     [SerializeField] private float firstAttackDamage = 20f;
@@ -25,9 +26,19 @@ public class ComboSystem : MonoBehaviour
     [SerializeField] private float hitStopDuration = 0.1f;
     [SerializeField] private float timeScale = 0.1f;
     
+    [Header("Ground Slam Settings")]
+    [SerializeField] private float groundSlamDamage = 50f;
+    [SerializeField] private float groundSlamRange = 3f;
+    [SerializeField] private float groundSlamKnockback = 15f;
+    [SerializeField] private float groundSlamForce = 20f;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private GameObject slamEffectPrefab;
+    
     // Combo state
     private bool firstAttack = false;
     private bool secondAttack = false;
+    private bool isGroundSlamming = false;
+    private Rigidbody rb;
     
     
     private void Start()
@@ -37,17 +48,114 @@ public class ComboSystem : MonoBehaviour
             
         if (attackPoint == null)
             attackPoint = transform;
+
+        if (playerMovement == null)
+            playerMovement = GetComponent<BasicMovement>();
+        
+        rb = GetComponent<Rigidbody>();
     }
     
     private void Update()
     {
         if (Input.GetButtonDown("Fire1") || Input.GetMouseButtonDown(0))
         {
+            if (CheckForGroundSlam())
+                return;
+                
             PerformAttack();
         }
 
-        animator.SetBool("firstAttack",firstAttack);
-        animator.SetBool("secondAttack",secondAttack);
+        animator.SetBool("firstAttack", firstAttack);
+        animator.SetBool("secondAttack", secondAttack);
+    }
+    
+    private bool CheckForGroundSlam()
+    {
+        // Check if player is in the air (not grounded) and pressed attack
+        if (!playerMovement.IsGrounded() && !isGroundSlamming)
+        {
+            PerformGroundSlam();
+            return true;
+        }
+        return false;
+    }
+    
+    private void PerformGroundSlam()
+    {
+        isGroundSlamming = true;
+        animator.SetBool("groundSlamming",true);
+        playerMovement.SetCanMove(false);
+
+        
+        // Apply downward force for quick landing
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z);
+        rb.AddForce(Vector3.down * groundSlamForce, ForceMode.Impulse);
+        
+        // Start checking for ground collision
+        StartCoroutine(CheckGroundSlamImpact());
+    }
+    
+    private IEnumerator CheckGroundSlamImpact()
+    {
+        // Wait until we hit the ground
+        while (!playerMovement.IsGrounded())
+        {
+            yield return null;
+        }
+        
+        animator.SetBool("groundSlamming",false);
+        // We've hit the ground, perform the ground slam attack
+        GroundSlamImpact();
+        
+        // Reset state
+        isGroundSlamming = false;
+    }
+    
+    private void GroundSlamImpact()
+    {
+        // Detect enemies in range
+        Collider[] hitEnemies = Physics.OverlapSphere(transform.position, groundSlamRange, enemyLayers);
+        
+        // Apply damage to enemies
+        bool hitSomething = false;
+        foreach (Collider enemy in hitEnemies)
+        {
+            EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(groundSlamDamage);
+                ApplyRadialKnockback(enemy.transform, groundSlamKnockback);
+                hitSomething = true;
+            }
+        }
+        
+        // Apply hit stop if we hit something
+        if (hitSomething && useHitStop)
+        {
+            DoHitStop();
+        }
+        
+        // Spawn visual effect
+        if (slamEffectPrefab != null)
+        {
+            Instantiate(slamEffectPrefab, transform.position, Quaternion.identity);
+        }
+    }
+    
+    private void ApplyRadialKnockback(Transform target, float knockbackForce)
+    {
+        Rigidbody targetRb = target.GetComponent<Rigidbody>();
+        if (targetRb != null)
+        {
+            // Calculate direction from impact point to enemy
+            Vector3 direction = (target.position - transform.position).normalized;
+            
+            // Add upward force for better visual effect
+            direction.y += knockbackUpwardForce;
+            
+            // Apply the knockback force
+            targetRb.AddForce(direction * knockbackForce, ForceMode.Impulse);
+        }
     }
     
     private void PerformAttack()
@@ -55,6 +163,7 @@ public class ComboSystem : MonoBehaviour
         if (!firstAttack && !secondAttack)
         {
             firstAttack = true;
+            playerMovement.SetCanMove(false);
         }
         else if (firstAttack && !secondAttack)
         {
@@ -67,6 +176,7 @@ public class ComboSystem : MonoBehaviour
         if (!secondAttack)
         {
             firstAttack = false;
+            playerMovement.SetCanMove(true);
         }
     }
     
@@ -74,6 +184,7 @@ public class ComboSystem : MonoBehaviour
     {
         secondAttack = false;
         firstAttack = false;
+        playerMovement.SetCanMove(true);
     }
     
     // Called from animation event during first attack animation
@@ -131,7 +242,10 @@ public class ComboSystem : MonoBehaviour
             rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
         }
     }
-    
+    public void EnableSetCanMove()
+    {
+        playerMovement.SetCanMove(true);
+    }
     private void DoHitStop()
     {
         StartCoroutine(HitStopCoroutine());
@@ -163,5 +277,9 @@ public class ComboSystem : MonoBehaviour
             
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        
+        // Draw ground slam range
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, groundSlamRange);
     }
 } 
