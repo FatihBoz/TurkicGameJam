@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class DashController : MonoBehaviour
 {
     private InputSystem_Actions inputActions;
-    public PlayerMovement characterController;
+    public BasicMovement basicMovement;
 
 
     [Header("Movement")]
@@ -31,7 +31,7 @@ public class DashController : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
 
-        characterController = GetComponent<PlayerMovement>();
+        basicMovement = GetComponent<BasicMovement>();
     }
 
     private void OnEnable()
@@ -55,7 +55,7 @@ public class DashController : MonoBehaviour
     {
         print("Dashing");
 
-        characterController.SetCanMove(false);
+        basicMovement.SetCanMove(false);
 
         isDashing = true;
         canDash = false;
@@ -83,7 +83,7 @@ public class DashController : MonoBehaviour
         Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
 
         isDashing = false;
-        characterController.SetCanMove(true);
+        basicMovement.SetCanMove(true);
 
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;

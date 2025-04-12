@@ -1,13 +1,20 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class BasicMovement : MonoBehaviour
 {
     private InputSystem_Actions inputActions;
     private Archer archer;
     private Animator animator;
     private Rigidbody rb;
 
-    private bool canMove = true;    
+    [Header("Jump")]
+    [SerializeField] private float jumpForce = 7f;
+    [SerializeField] private int maxJumps = 2;
+    private int currentJumps;
+    private bool isGrounded;
+
+
+    private bool canMove = true;
 
     [SerializeField] private float moveSpeed = 5f;
 
@@ -23,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     {
         inputActions.Player.Enable();
         inputActions.Player.Attack.performed += ctx => archer.Attack(this);
+        inputActions.Player.Jump.performed += ctx => Jump();
     }
 
     private void OnDisable()
@@ -49,18 +57,35 @@ public class PlayerMovement : MonoBehaviour
 
         Vector2 moveInput = inputActions.Player.Move.ReadValue<Vector2>();
 
-        
+
 
         if (moveInput != Vector2.zero)
         {
-            
+
             Vector3 moveDirection = new(moveInput.x, 0f, moveInput.y);
             rb.linearVelocity = moveDirection * moveSpeed;
         }
 
-        
+
     }
 
+    private void Jump()
+    {
+        if (currentJumps < maxJumps)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            currentJumps++;
+        }
+    }
+
+    private void CheckIfGrounded()
+    {
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 0.1f); // Yere yakýnsa grounded
+        if (isGrounded)
+        {
+            currentJumps = 0; // Zeminle temasta iken zýplama sayýsýný sýfýrla
+        }
+    }
 
     public void SetCanMove(bool value)
     {

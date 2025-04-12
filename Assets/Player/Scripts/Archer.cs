@@ -7,6 +7,8 @@ public class Archer : MonoBehaviour
 
     private PlayerMovement playerMovement;
     private bool attackingBuffer = true;
+    private BasicMovement playerMovement;
+
     public void ArrowInstantiateAnimationMethod()
     {
         Instantiate(arrowPrefab, shootPoint.position, Quaternion.identity);
@@ -17,7 +19,7 @@ public class Archer : MonoBehaviour
         attackingBuffer = true;
     }
 
-    public void Attack(PlayerMovement movement)
+    public void Attack(BasicMovement movement)
     {
 
         if (attackingBuffer)
