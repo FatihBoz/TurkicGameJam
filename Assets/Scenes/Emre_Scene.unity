@@ -584,13 +584,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6756902112732976653, guid: ad779ae5de0f2f04fa84f92182047537, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 541456336}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad779ae5de0f2f04fa84f92182047537, type: 3}
 --- !u!1 &410087039
 GameObject:
@@ -744,29 +742,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1278973257}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &541456329 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6756902112732976653, guid: ad779ae5de0f2f04fa84f92182047537, type: 3}
-  m_PrefabInstance: {fileID: 408216429}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &541456336
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541456329}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b884f048a0c4e242bb09e02fde8534e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterController: {fileID: 0}
-  moveSpeed: 5
-  dashForce: 20
-  dashDuration: 0.2
-  dashCooldown: 1
-  dashTrailPrefab: {fileID: 4864944293383124153, guid: 060f9cc34c70c704ebe806b61487b862, type: 3}
 --- !u!1 &778077824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,7 +1081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b884f048a0c4e242bb09e02fde8534e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterController: {fileID: 0}
+  basicMovement: {fileID: 0}
   moveSpeed: 5
   dashForce: 20
   dashDuration: 0.2
