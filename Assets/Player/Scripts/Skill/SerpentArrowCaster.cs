@@ -14,20 +14,35 @@ public class SerpentArrowCaster : Skill
     [SerializeField] float coneAngle = 60f;
     [SerializeField] float rayDistance = 10f;
 
+    float elapsedTime = 0f;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !Archer.Instance.isCasting)
+        if (Input.GetKeyDown(KeyCode.E) && !Archer.Instance.isCasting && !isOnCooldown)
         {
             Archer.Instance.SetCasting(true);
             Archer.Instance.SetAttackingBuffer(false);
             Archer.Instance.isCasting = true;
             CastSkill();
+            isOnCooldown = true;
+            skillBar.Cooldown(cooldownTime);
+        }
+
+
+        if (isOnCooldown)
+        {
+            elapsedTime += Time.deltaTime;
+
+            if (elapsedTime >= cooldownTime)
+            {
+                elapsedTime = 0f;
+                isOnCooldown = false;
+            }
         }
     }
 
     private async void CastSkill()
     {
-
+        //COROUTINE YAZILACAK
         SkillVisual tempObj = Instantiate(skillEffect, Archer.Instance.GetShootPoint().position, Quaternion.identity);
         tempObj.transform.SetParent(Archer.Instance.GetShootPoint().parent);
         tempObj.Initialize(1f); 

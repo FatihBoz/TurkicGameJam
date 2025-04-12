@@ -2,7 +2,8 @@ using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
-    protected KeyCode keyCode;
+    [SerializeField] protected float cooldownTime = 8f;
+    protected bool isOnCooldown = false;
     [SerializeField] protected SkillBar skillBar;
 
 
@@ -16,13 +17,4 @@ public abstract class Skill : MonoBehaviour
         this.skillBar = skillBar;
     }
 
-    public KeyCode GetKeyCode()
-    {
-        return keyCode;
-    }
-
-    public void SetKeyCode(KeyCode key)
-    {
-        this.keyCode = key;
-    }
 }

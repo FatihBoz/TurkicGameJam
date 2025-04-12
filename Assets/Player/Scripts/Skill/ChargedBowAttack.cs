@@ -8,15 +8,30 @@ public class ChargedBowAttack : Skill
     [SerializeField] private float chargeTime = 2f;
     [SerializeField] private float waitingTimeBetweenArrows = 0.25f;
     [SerializeField] private int maxArrows = 3;
+    private float elapsedTime = 0f;
+
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && !Archer.Instance.isCasting)
+        if (Input.GetKeyDown(KeyCode.Q) && !Archer.Instance.isCasting && !isOnCooldown)
         {
             Archer.Instance.SetCasting(true);
             Archer.Instance.SetAttackingBuffer(false);
             Archer.Instance.isCasting = true;
             Charge();
+            isOnCooldown = true;
+            skillBar.Cooldown(cooldownTime);
+        }
+
+        if (isOnCooldown)
+        {
+            elapsedTime += Time.deltaTime;
+
+            if (elapsedTime >= cooldownTime)
+            {
+                elapsedTime = 0f;
+                isOnCooldown = false;
+            }
         }
     }
 
