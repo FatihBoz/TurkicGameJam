@@ -33,10 +33,7 @@ public class BasicMovement : MonoBehaviour
         animator = GetComponent<Animator>();
 
         archer = GetComponent<Archer>();
-        if (archer != null)
-        {
-            archer.Initialize(this);
-        }
+
 
 
     }
@@ -50,6 +47,11 @@ public class BasicMovement : MonoBehaviour
             inputActions.Player.Attack.performed += ctx => archer.Attack(this);
         }
         inputActions.Player.Jump.performed += ctx => Jump();
+
+        if (archer != null)
+        {
+            archer.Initialize(this);
+        }
     }
 
     private void OnDisable()
@@ -66,6 +68,7 @@ public class BasicMovement : MonoBehaviour
 
     public void PlayAnimation(string animName, bool value)
     {
+
         animator.SetBool(animName, value);
     }
 
