@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private float speed = 10f;
-    [SerializeField] private float lifetime = 1.5f;
+    [SerializeField] protected float speed = 10f;
+    [SerializeField] protected float lifetime = 1.5f;
 
     float elapsedTimeAfterInstantiated = 0f;
 
 
-    private void Update()
+     protected virtual void Update()
     {
         elapsedTimeAfterInstantiated += Time.deltaTime;
 

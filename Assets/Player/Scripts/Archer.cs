@@ -9,6 +9,7 @@ public class Archer : MonoBehaviour
     private bool attackingBuffer = true;
     private BasicMovement playerMovement;
     private ChargedBowAttack chargedBowAttack;
+    ConeRaycaster coneRaycaster;
     private bool isCasting = false;
 
 
@@ -21,37 +22,14 @@ public class Archer : MonoBehaviour
         {
             chargedBowAttack.Initialize(this);
         }
-    }
 
-
-    private void FixedUpdate()
-    {
-        Rotate(playerMovement.GetHorizontalVelocity().normalized);
-
-        if (isCasting)
+        coneRaycaster = GetComponent<ConeRaycaster>();
+        if (coneRaycaster != null)
         {
-            Vector2 mousePos = playerMovement.GetInputActions().UI.Point.ReadValue<Vector2>();
-            Ray ray = Camera.main.ScreenPointToRay(new Vector3(mousePos.x, mousePos.y));
-
-            if (Physics.Raycast(ray, out RaycastHit hit, 100f, groundLayer))
-            {
-                Vector3 lookDirection = hit.point - transform.position;
-                lookDirection.y = 0f;
-                if (lookDirection != Vector3.zero)
-                {
-                    Rotate(lookDirection.normalized);
-                }
-            }
-
+            coneRaycaster.Initialize(this);
         }
     }
-
-
-    public void Rotate(Vector3 dir)
-    {
-        Quaternion targetRotation = Quaternion.LookRotation(dir);
-        playerMovement.GetRigidbody().MoveRotation(targetRotation);
-    }
+ 
 
 
     public void ArrowInstantiateAnimationMethod()
@@ -71,23 +49,6 @@ public class Archer : MonoBehaviour
         {
             isCasting = true;
             movement.SetCanMove(false);
-
-            Vector2 mousePos = movement.GetInputActions().UI.Point.ReadValue<Vector2>();
-
-            Ray ray = Camera.main.ScreenPointToRay(new Vector3(mousePos.x, mousePos.y));
-
-
-            if (Physics.Raycast(ray, out RaycastHit hit, 100f, groundLayer))
-            {
-                Vector3 lookDirection = hit.point - transform.position;
-                lookDirection.y = 0f;
-                print(lookDirection);
-
-                if (lookDirection != Vector3.zero)
-                {
-                    Rotate(lookDirection.normalized);
-                }
-            }
             movement.PlayAnimation("isMoving", false);
             playerMovement = movement;
             playerMovement.PlayAnimation("ArrowAttack");
@@ -112,5 +73,9 @@ public class Archer : MonoBehaviour
         isCasting = casting;
     }
 
+    public Transform GetShootPoint()
+    {
+        return shootPoint;
+    }
 
 }
