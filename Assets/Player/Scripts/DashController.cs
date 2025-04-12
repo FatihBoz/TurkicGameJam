@@ -1,12 +1,11 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
 public class DashController : MonoBehaviour
 {
     private InputSystem_Actions inputActions;
-    public BasicMovement basicMovement;
+    private BasicMovement basicMovement;
 
 
     [Header("Movement")]

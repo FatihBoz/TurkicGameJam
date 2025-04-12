@@ -13,7 +13,7 @@ public class BasicMovement : MonoBehaviour
     private int currentJumps;
     private bool isGrounded;
 
-
+    private Ray ray;
     private bool canMove = true;
 
     [SerializeField] private float moveSpeed = 5f;
@@ -29,6 +29,7 @@ public class BasicMovement : MonoBehaviour
     private void OnEnable()
     {
         inputActions.Player.Enable();
+        inputActions.UI.Enable();
         if (archer != null)
         {
             inputActions.Player.Attack.performed += ctx => archer.Attack(this);
@@ -39,6 +40,7 @@ public class BasicMovement : MonoBehaviour
     private void OnDisable()
     {
         inputActions.Player.Disable();
+        inputActions.UI.Disable();
     }
 
 
@@ -55,6 +57,7 @@ public class BasicMovement : MonoBehaviour
 
         if (!canMove)
         {
+            rb.linearVelocity = Vector3.zero;
             return;
         }
 
@@ -67,7 +70,12 @@ public class BasicMovement : MonoBehaviour
 
             Vector3 moveDirection = new(moveInput.x, 0f, moveInput.y);
             rb.linearVelocity = moveDirection * moveSpeed;
+
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            rb.MoveRotation(targetRotation);
         }
+
+
 
 
     }
@@ -88,6 +96,11 @@ public class BasicMovement : MonoBehaviour
         {
             currentJumps = 0; // Zeminle temasta iken z�plama say�s�n� s�f�rla
         }
+    }
+
+    public InputSystem_Actions GetInputActions()
+    {
+        return inputActions;
     }
 
     public void SetCanMove(bool value)

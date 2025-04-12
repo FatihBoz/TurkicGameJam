@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
 
     float elapsedTimeAfterInstantiated = 0f;
 
+
     private void Update()
     {
         elapsedTimeAfterInstantiated += Time.deltaTime;
