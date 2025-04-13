@@ -46,9 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 8
   skillBar: {fileID: 2983081814853614504}
+  locked: 0
   comboSystem: {fileID: 1462370162184940675}
   rageSkillKey: 113
-  rageActivationEffect: {fileID: 0}
 --- !u!1 &932397008766893976
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,6 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 8
   skillBar: {fileID: 2895844012741652424}
+  locked: 0
   comboSystem: {fileID: 1462370162184940675}
   thrustSkillKey: 101
   rageActivationEffect: {fileID: 0}
@@ -241,7 +242,7 @@ Canvas:
   m_GameObject: {fileID: 8681345926866775745}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -303,6 +304,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5627055701086605018}
     m_Modifications:
+    - target: {fileID: 882383410432477105, guid: a81bbfde00bc550449f84682c42f79f1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e72d093482dae1a42a8499eaeb08e493, type: 3}
     - target: {fileID: 2275464996025459220, guid: a81bbfde00bc550449f84682c42f79f1, type: 3}
       propertyPath: m_Name
       value: Thrust
@@ -423,6 +428,18 @@ PrefabInstance:
     - target: {fileID: 2188016444909768340, guid: a124743bc0f94904c886e70954a7d055, type: 3}
       propertyPath: m_Name
       value: Rage
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723455690682321576, guid: a124743bc0f94904c886e70954a7d055, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e4bc2df2efb36b44a947ab8922db378e, type: 3}
+    - target: {fileID: 4723455690682321576, guid: a124743bc0f94904c886e70954a7d055, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4723455690682321576, guid: a124743bc0f94904c886e70954a7d055, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8580828029072224426, guid: a124743bc0f94904c886e70954a7d055, type: 3}
       propertyPath: m_Pivot.x
@@ -753,7 +770,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   slamEffectPrefab: {fileID: 1180248314969840, guid: 101d62f0a3e4fef4eab61adb79c845df, type: 3}
-  rageDuration: 10
+  rageDuration: 4
   rageDamageMultiplier: 1.5
   rageAttackSpeedMultiplier: 2
   rageMoveSpeedMultiplier: 1.2
@@ -783,7 +800,7 @@ MonoBehaviour:
   dashForce: 20
   dashDuration: 0.2
   dashCooldown: 1
-  dashTrailPrefab: {fileID: 0}
+  dashTrailPrefab: {fileID: 4864944293383124153, guid: 060f9cc34c70c704ebe806b61487b862, type: 3}
 --- !u!114 &2014890850860222862
 MonoBehaviour:
   m_ObjectHideFlags: 0

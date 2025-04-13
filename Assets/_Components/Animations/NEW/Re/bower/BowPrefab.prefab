@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 5
   skillBar: {fileID: 7602458611455170369}
+  locked: 0
   animator: {fileID: 2767474946577870152}
   arrowPrefab: {fileID: 3407595000391258575, guid: 1aa1af23589a3b74cb998dcdf22c4db5, type: 3}
 --- !u!1 &3425362377701189191
@@ -127,7 +128,7 @@ Canvas:
   m_GameObject: {fileID: 5021225992320784890}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -292,6 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 2
   skillBar: {fileID: 7143625267342246057}
+  locked: 0
   projectilePrefab: {fileID: 5257942848873276042, guid: 836870c21f3f0b64eaab370e1acddacf, type: 3}
   enemyLayer:
     serializedVersion: 2
@@ -347,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldownTime: 8
   skillBar: {fileID: 206365584081315556}
+  locked: 0
   projectilePrefab: {fileID: 7387677746529748338, guid: 63de215d0f95ca04e9a539c707ec3164, type: 3}
   chargeEffectPrefab: {fileID: 7437810868741175512, guid: 78cc5b119814ac448928d96f4b99967a, type: 3}
   chargeTime: 2
@@ -1183,6 +1186,10 @@ PrefabInstance:
     - target: {fileID: 7201917966075633215, guid: a81bbfde00bc550449f84682c42f79f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7689809612720270807, guid: a81bbfde00bc550449f84682c42f79f1, type: 3}
+      propertyPath: m_text
+      value: R
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

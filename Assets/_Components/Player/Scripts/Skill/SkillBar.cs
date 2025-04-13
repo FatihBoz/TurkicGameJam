@@ -11,12 +11,21 @@ public class SkillBar : MonoBehaviour
     [SerializeField] private float cooldown;
     bool isOnCooldown = false;
     float elapsedTime = 0f;
+
+        public Image lockOBJ;
     public void Cooldown(float cd)
     {
         cooldown = cd;
         closerImage.gameObject.SetActive(true);
         closerImage.fillAmount = 1;
         isOnCooldown = true;
+    }
+     public void Unlock()
+    {
+        if (lockOBJ!=null)
+        {
+            Destroy(lockOBJ.gameObject); 
+        }
     }
 
     private void Update()

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerChange : MonoBehaviour
@@ -9,6 +10,7 @@ public class PlayerChange : MonoBehaviour
     [SerializeField] private GameObject warrior;
     bool isArcherActive = true;
     private GameObject player;
+    public static Action OnPlayerChange;
 
     private void Awake()
     {
@@ -21,6 +23,7 @@ public class PlayerChange : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            OnPlayerChange?.Invoke();
             if (isArcherActive)
             {
                 player = warrior;

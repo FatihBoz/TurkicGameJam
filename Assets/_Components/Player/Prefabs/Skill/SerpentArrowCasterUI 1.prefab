@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 1025077212050925909}
   - component: {fileID: 4539877882999047686}
   m_Layer: 5
-  m_Name: SerpentArrowCasterUI
+  m_Name: SerpentArrowCasterUI 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
