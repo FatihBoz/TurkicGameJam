@@ -19,15 +19,51 @@ public class SpearEnemyAI : MonoBehaviour
     private NavMeshAgent agent;           // AI'nin hareket ettiði ajan
     private float lastAttackTime = 0f;    // Son saldýrý zamaný
 
-    private enum State { Patrol, Chase, Attack }
+    private enum State { Patrol, Chase, Attack, Idle }
     private State currentState;
-    
+
+    private Animator animator;            // Animator bileþeni
+
+
 
     void Awake()
     {
-        GetPatrolPoints();
+        animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        currentState = State.Patrol;
+        currentState = DecideFirstState(); // Ýlk durumu belirle
+
+        if (currentState == State.Idle)
+        {
+            animator.SetBool("isPatrol", false); // Yürüyüþ animasyonunu durdur
+        }
+        else if (currentState == State.Patrol)
+        {
+            animator.SetBool("isPatrol", true); // Yürüyüþ animasyonunu baþlat
+            GetPatrolPoints();
+            print("Walking");
+        }
+
+    }
+
+    State DecideFirstState()
+    {
+        State firstState = State.Idle;
+        if (patrolParent == null)
+        {
+            firstState = State.Idle;
+            Debug.Log("Patrol Parent is not assigned in the inspector.");
+        }
+        else if (patrolParent != null)
+        {
+            firstState = State.Patrol;
+        }
+
+        return firstState;
+    }
+
+    private void Start()
+    {
+
     }
 
     void Update()
@@ -37,31 +73,44 @@ public class SpearEnemyAI : MonoBehaviour
         switch (currentState)
         {
             case State.Patrol:
-                PatrolBehaviour();
                 if (distanceToPlayer < detectionRange)
                 {
                     currentState = State.Chase;
                 }
+                PatrolBehaviour();
+
                 break;
 
             case State.Chase:
-                ChasePlayer();
                 if (distanceToPlayer <= attackRange)
                 {
                     currentState = State.Attack;
                 }
+                ChasePlayer();
+
                 break;
 
             case State.Attack:
-                AttackPlayer();
                 if (distanceToPlayer > attackRange)
                 {
                     currentState = State.Chase;
                 }
+                AttackPlayer();
+
                 break;
 
+            case State.Idle:
+                if (distanceToPlayer < detectionRange)
+                {
+                    currentState = State.Chase;
+                }
+                IdleWait();
+
+                break;
         }
     }
+
+
 
     // Patrol Yapma
     void PatrolBehaviour()
@@ -85,6 +134,7 @@ public class SpearEnemyAI : MonoBehaviour
         // Oyuncuyu tespit etme
         if (Vector3.Distance(transform.position, player.position) < detectionRange)
         {
+            animator.SetBool("isChasing", true); // Yürüyüþ animasyonunu durdur
             currentState = State.Chase;
         }
     }
@@ -101,12 +151,22 @@ public class SpearEnemyAI : MonoBehaviour
         }
     }
 
+    void IdleWait()
+    {
+        agent.speed = 0f; // Beklerken hareket etmesin
+        animator.SetBool("isPatrol", false); // Yürüyüþ animasyonunu durdur
+
+
+    }
 
     // Oyuncuyu takip etme
     void ChasePlayer()
     {
-        agent.speed = moveSpeed * 1.5f;
         agent.SetDestination(player.position);
+        animator.SetBool("isChasing", true); // Yürüyüþ animasyonunu baþlat
+        agent.speed = moveSpeed * 1.5f;
+
+
     }
 
     // Mýzrakla oyuncuya saldýrma
@@ -116,11 +176,13 @@ public class SpearEnemyAI : MonoBehaviour
         if (Time.time - lastAttackTime > attackCooldown)
         {
             // Burada mýzrak saldýrýsý animasyonu ve etkiyi tetikleyebilirsiniz.
-            Debug.Log("Spear Attack!");
+            Debug.Log("Attack!");
+            animator.SetTrigger("Attack");
+            animator.SetBool("isChasing", false); // Yürüyüþ animasyonunu durdur
+
 
             // Saldýrýyý gerçekleþtirdikten sonra saldýrý zamanýný güncelle
             lastAttackTime = Time.time;
         }
     }
-
 }

@@ -2136,7 +2136,7 @@ GameObject:
   - component: {fileID: 6718991601616123803}
   - component: {fileID: 8434598773727144674}
   m_Layer: 0
-  m_Name: RPGHeroPolyart
+  m_Name: Swordsman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2169,7 +2169,7 @@ Animator:
   m_GameObject: {fileID: 1835885862194036}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: e4aa31f274820b94eb0d0b764e0f383b, type: 3}
-  m_Controller: {fileID: 9100000, guid: 081111fd1834f42469e07a9a2ce295c6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 97d63802800cd0f4db267ac77719c759, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
