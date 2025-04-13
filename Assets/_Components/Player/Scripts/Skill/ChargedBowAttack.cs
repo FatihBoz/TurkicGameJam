@@ -13,6 +13,10 @@ public class ChargedBowAttack : Skill
 
     private void Update()
     {
+        if (locked)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Q) && !Archer.Instance.isCasting && !isOnCooldown)
         {
             Archer.Instance.SetCasting(true);

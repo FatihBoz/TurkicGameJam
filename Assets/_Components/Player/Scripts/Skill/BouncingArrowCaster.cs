@@ -9,6 +9,11 @@ public class BouncingArrowCaster : Skill
     float elapsedTime = 0f; 
     private void Update()
     {
+        if (locked)
+        {
+            return;
+        }
+        
         if (Input.GetKeyDown(KeyCode.R) && !Archer.Instance.isCasting && !isOnCooldown)
         {
             Archer.Instance.InstantiateBouncingArrow(arrowPrefab);

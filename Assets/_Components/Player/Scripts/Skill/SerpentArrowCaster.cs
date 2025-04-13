@@ -17,6 +17,10 @@ public class SerpentArrowCaster : Skill
     float elapsedTime = 0f;
     private void Update()
     {
+        if (locked)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.E) && !Archer.Instance.isCasting && !isOnCooldown)
         {
             Archer.Instance.SetCasting(true);
@@ -70,7 +74,7 @@ public class SerpentArrowCaster : Skill
 
             Vector3 direction = Quaternion.Euler(0, angle, 0) * transform.forward;
 
-            Vector3 tempDir = new(transform.position.x, Archer.Instance.GetShootPoint().position.y, transform.position.z);//rayler çok aþaðýda kalýyor;
+            Vector3 tempDir = new(transform.position.x, Archer.Instance.GetShootPoint().position.y, transform.position.z);//rayler ï¿½ok aï¿½aï¿½ï¿½da kalï¿½yor;
             Debug.DrawRay(tempDir, direction * rayDistance, Color.red, 1f); 
             if (Physics.Raycast(tempDir, direction, out RaycastHit hit, rayDistance, enemyLayer))
             {
@@ -83,7 +87,7 @@ public class SerpentArrowCaster : Skill
                 float offSetAngle = 20f * currentProjectiles;
                 if (currentProjectiles % 2 == 0)
                 {
-                    offSetAngle *= -1;// Bir saða bir sola mermi atmak için
+                    offSetAngle *= -1;// Bir saï¿½a bir sola mermi atmak iï¿½in
                     
                 }
 

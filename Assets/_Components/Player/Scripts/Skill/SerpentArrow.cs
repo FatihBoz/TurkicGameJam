@@ -24,6 +24,7 @@ public class SerpentArrow : Projectile
     protected override void Update()
     {
         
+        
         elapsedTimeAfterInstantiate += Time.deltaTime;
 
         if (elapsedTimeAfterInstantiate >= lifetime)

@@ -5,6 +5,8 @@ public class EnemyHealth : MonoBehaviour, IDamageReceiver
     [SerializeField]
     private float health = 100f;
 
+
+    
     public void TakeDamage(float amount)
     {
         health -= amount;
@@ -16,6 +18,7 @@ public class EnemyHealth : MonoBehaviour, IDamageReceiver
 
     void Die()
     {
+        SkillUnlocker.Instance.IncreaseSlayedMonsterCount();
         Destroy(gameObject);
     }
 }

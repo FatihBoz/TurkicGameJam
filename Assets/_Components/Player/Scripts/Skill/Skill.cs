@@ -7,6 +7,15 @@ public abstract class Skill : MonoBehaviour
     [SerializeField] protected SkillBar skillBar;
 
 
+    public bool locked;
+    void Awake()
+    {
+        locked=true;
+    }
+    public void UnlockSkill()
+    {
+        locked=false;
+    }
     public SkillBar GetSkillBar()
     {
         return skillBar;
