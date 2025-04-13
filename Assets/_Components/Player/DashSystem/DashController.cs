@@ -31,8 +31,9 @@ public class DashController : MonoBehaviour
 
     private void OnEnable()
     {
-        inputActions.Player.Dash.performed += ctx => StartCoroutine(DashCoroutine());
         inputActions.Player.Enable();
+        inputActions.Player.Dash.performed += ctx => StartCoroutine(DashCoroutine());
+        canDash = true; // Baþlangýçta dash yapabiliriz
     }
 
     private void OnDisable()
@@ -42,6 +43,8 @@ public class DashController : MonoBehaviour
 
     IEnumerator DashCoroutine()
     {
+        print("candash: " + canDash);
+        print("isdashing: " + isDashing);
         if (!canDash || isDashing) yield break;
 
         isDashing = true;
@@ -89,8 +92,8 @@ public class DashController : MonoBehaviour
 
     void CreateDashTrail(Vector3 start, Vector3 end)
     {
-        DashTrail trail = Instantiate(dashTrailPrefab, new Vector3(0, start.y + 20, 0), Quaternion.identity);
-        trail.Initialize(start, end);
+        //DashTrail trail = Instantiate(dashTrailPrefab, new Vector3(0, start.y + 20, 0), Quaternion.identity);
+        //trail.Initialize(start, end);
     }
 
     private void FixedUpdate()

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 
 public class RageSkill : Skill
 {
@@ -24,6 +23,7 @@ public class RageSkill : Skill
         // Check for keypress and activate rage if not on cooldown
         if (Input.GetKeyDown(rageSkillKey) && !isOnCooldown && !isRageActive)
         {
+            skillBar.Cooldown(cooldownTime);
             isOnCooldown = true;
             isRageActive = true;
             

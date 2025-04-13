@@ -71,7 +71,7 @@ public class Archer : MonoBehaviour
         return shootPoint;
     }
 
-    void RestrainPlayer(bool restrain)
+    public void RestrainPlayer(bool restrain)
     {
         if (playerMovement != null)
         {
