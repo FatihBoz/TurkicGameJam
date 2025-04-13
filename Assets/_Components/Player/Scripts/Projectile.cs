@@ -24,7 +24,12 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.TryGetComponent(out IDamageReceiver damageReceiver))
+        if (collision.gameObject.CompareTag("Object"))
+        {
+            collision.gameObject.GetComponent<ObjectDestroy>().DestroyObject();
+        }
+
+        if (collision.gameObject.TryGetComponent(out IDamageReceiver damageReceiver))
         {
             Destroy(Instantiate(hitEffect, transform.position, Quaternion.identity), 1f);
             damageReceiver.TakeDamage(10f);
