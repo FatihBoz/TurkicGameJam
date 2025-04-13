@@ -61,11 +61,6 @@ public class Archer : MonoBehaviour
         playerMovement.SetCanMove(buffer);
     }
 
-    public bool IsCasting()
-    {
-        return isCasting;
-    }
-
     public void SetCasting(bool casting)
     {
         isCasting = casting;
