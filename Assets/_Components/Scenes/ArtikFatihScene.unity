@@ -5838,10 +5838,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 733785225585239120, guid: df5454ed27b73ad40aada08cb1c2ce5c, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5895904197856970809, guid: df5454ed27b73ad40aada08cb1c2ce5c, type: 3}
       propertyPath: m_Name
       value: MeleeEnemy
