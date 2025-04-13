@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private GameObject hitEffect;
+    [SerializeField] protected GameObject hitEffect;
     [SerializeField] protected float speed = 10f;
     [SerializeField] protected float lifetime = 1.5f;
 
@@ -22,7 +22,7 @@ public class Projectile : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Object"))
         {
@@ -31,6 +31,7 @@ public class Projectile : MonoBehaviour
 
         if (collision.gameObject.TryGetComponent(out IDamageReceiver damageReceiver))
         {
+            ScreenShake.Instance.Shake(1.2f, 0.3f);
             Destroy(Instantiate(hitEffect, transform.position, Quaternion.identity), 1f);
             damageReceiver.TakeDamage(10f);
             Destroy(gameObject);

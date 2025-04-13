@@ -60,6 +60,8 @@ public class SerpentArrowCaster : Skill
         float halfAngle = coneAngle / 2f;
         int currentProjectiles = 0; 
 
+        bool scrennShake = true;
+
         for (int i = 0; i < rayCount; i++)
         {
 
@@ -68,10 +70,15 @@ public class SerpentArrowCaster : Skill
 
             Vector3 direction = Quaternion.Euler(0, angle, 0) * transform.forward;
 
-            Vector3 tempDir = new(transform.position.x, transform.position.y + 0.5f, transform.position.z);//rayler çok aþaðýda kalýyor;
+            Vector3 tempDir = new(transform.position.x, Archer.Instance.GetShootPoint().position.y, transform.position.z);//rayler çok aþaðýda kalýyor;
             Debug.DrawRay(tempDir, direction * rayDistance, Color.red, 1f); 
             if (Physics.Raycast(tempDir, direction, out RaycastHit hit, rayDistance, enemyLayer))
             {
+                if(scrennShake)
+                {
+                    ScreenShake.Instance.Shake(1.5f, 0.4f);
+                    scrennShake = false;
+                }
                 print("Hit: " + hit.transform.name);
                 float offSetAngle = 20f * currentProjectiles;
                 if (currentProjectiles % 2 == 0)
