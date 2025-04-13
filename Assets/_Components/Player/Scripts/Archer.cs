@@ -10,6 +10,7 @@ public class Archer : MonoBehaviour
 
     private bool attackingBuffer = true;
     private BasicMovement playerMovement;
+    private BouncingArrow bouncingArrowPrefab;
     public bool isCasting = false;
 
 
@@ -23,29 +24,36 @@ public class Archer : MonoBehaviour
 
     public void ArrowInstantiateAnimationMethod()
     {
-        print("animation event");
         Instantiate(arrowPrefab, shootPoint.position, transform.rotation);
-        if(playerMovement != null)
-        {
-            playerMovement.SetCanMove(true);
-        }
-        attackingBuffer = true;
-        isCasting = false;
+        RestrainPlayer(false);
+    }
+
+    public void BouncingArrowInstantiateAnimationMethod()
+    {
+        Instantiate(bouncingArrowPrefab, shootPoint.position, shootPoint.rotation);
+        RestrainPlayer(false);
+    }
+
+    public void InstantiateBouncingArrow(BouncingArrow arrowPrefab)
+    {
+        bouncingArrowPrefab = arrowPrefab;
+        playerMovement.PlayAnimation("BouncingArrowAttack");
+        RestrainPlayer(true);
     }
 
     public void Attack(BasicMovement movement)
     {
         if (attackingBuffer && !isCasting)
         {
-            isCasting = true;
-            movement.SetCanMove(false);
-            movement.PlayAnimation("isMoving", false);
             playerMovement = movement;
+            movement.PlayAnimation("isMoving", false);
             playerMovement.PlayAnimation("ArrowAttack");
-            
-            attackingBuffer = false;
+
+            RestrainPlayer(true);
         }
     }
+
+
 
     public void SetAttackingBuffer(bool buffer)
     {
@@ -66,6 +74,16 @@ public class Archer : MonoBehaviour
     public Transform GetShootPoint()
     {
         return shootPoint;
+    }
+
+    void RestrainPlayer(bool restrain)
+    {
+        if (playerMovement != null)
+        {
+            playerMovement.SetCanMove(!restrain);
+        }
+        attackingBuffer = !restrain;
+        isCasting = restrain;
     }
 
 }

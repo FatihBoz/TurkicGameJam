@@ -3,7 +3,37 @@ guid: 2f0e36d5b42f2004d96c25f0dd39f7e6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kemer_2.001
+    second: {fileID: 2100000, guid: 2ac0d1c8bf0a2834ba3bfb00e25f0f0b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "K\u0131yafet.001"
+    second: {fileID: 2100000, guid: 2508727707628af4da49c838e0ddd5d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: 58fbb302d7ee3b14395648cc409d3051, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: 20bfaed62593a4a46adf98ed7ce447a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Skin.001
+    second: {fileID: 2100000, guid: 1211fd864d38dbc4f9c0be19f217794e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bow.001
+    second: {fileID: 2100000, guid: a587df2af589e09458c685e10a91544a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

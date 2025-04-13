@@ -49,11 +49,12 @@ public class ChargedBowAttack : Skill
         chargeObj.Initialize(chargeTime);
         yield return new WaitForSeconds(chargeTime);
         Destroy(chargeObj);
-
+        
         //--------------------------------SHOOT-----------------------------------  
         int arrowCount = 0;
         while (arrowCount < maxArrows)
         {
+            ScreenShake.Instance.Shake(1f, 0.3f);
             Instantiate(projectilePrefab, Archer.Instance.GetShootPoint().position, Archer.Instance.GetShootPoint().rotation);
             arrowCount++;
             yield return new WaitForSeconds(waitingTimeBetweenArrows);
