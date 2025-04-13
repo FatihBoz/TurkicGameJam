@@ -27,6 +27,7 @@ public class ComboSystem : MonoBehaviour
     [SerializeField] private bool useHitStop = true;
     [SerializeField] private float hitStopDuration = 0.1f;
     [SerializeField] private float timeScale = 0.1f;
+    private bool isHitStopActive = false;
     
     [Header("Ground Slam Settings")]
     [SerializeField] private float groundSlamDamage = 50f;
@@ -327,11 +328,17 @@ public class ComboSystem : MonoBehaviour
     }
     private void DoHitStop()
     {
-        StartCoroutine(HitStopCoroutine());
+        if (!isHitStopActive)
+        {
+            StartCoroutine(HitStopCoroutine());
+        }
     }
     
     private IEnumerator HitStopCoroutine()
     {
+        // Set the flag to indicate hit stop is active
+        isHitStopActive = true;
+        
         // Store original time scale and set to slow motion
         float originalTimeScale = Time.timeScale;
         Time.timeScale = timeScale;
@@ -346,6 +353,9 @@ public class ComboSystem : MonoBehaviour
         // Restore original time scale and fixed delta time
         Time.timeScale = originalTimeScale;
         Time.fixedDeltaTime = originalFixedDeltaTime;
+        
+        // Reset the flag
+        isHitStopActive = false;
     }
     
     // Optional: Visualize the attack range in the editor
