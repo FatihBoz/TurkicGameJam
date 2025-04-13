@@ -98,6 +98,7 @@ MonoBehaviour:
   hitEffect: {fileID: 1425239480752687595, guid: 625ab5c2fa8673b4a95851d1c96a2dd0, type: 3}
   speed: 25
   lifetime: 1.5
+  damage: 40
   bounceRadius: 5
   bounceLayer:
     serializedVersion: 2

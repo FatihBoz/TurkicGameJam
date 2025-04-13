@@ -6,7 +6,6 @@ public class RageSkill : Skill
     [SerializeField] private KeyCode rageSkillKey = KeyCode.Q;
     
     [Header("Visual Effects")]
-    [SerializeField] private GameObject rageActivationEffect;
     private float elapsedTime = 0f;
     private bool isRageActive = false;
 
@@ -35,11 +34,6 @@ public class RageSkill : Skill
             // Call RageActivate on the combo system
             comboSystem.RageActivate();
             
-            // Spawn rage activation effect
-            if (rageActivationEffect != null)
-            {
-                Instantiate(rageActivationEffect, transform.position, Quaternion.identity, transform);
-            }
         }
         
         // Handle cooldown timer and UI display

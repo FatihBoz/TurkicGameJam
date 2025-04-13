@@ -47,7 +47,7 @@ public class BouncingArrow : Projectile
             currentEnemy = collision;
             ScreenShake.Instance.Shake(1.2f, 0.3f);
             Destroy(Instantiate(hitEffect, transform.position, Quaternion.identity), 1f);
-            damageReceiver.TakeDamage(10f);
+            damageReceiver.TakeDamage(damage);
             canFollow = false;
             if (DetermineNextTarget() != null && bounceCount < maxBounce)
             {

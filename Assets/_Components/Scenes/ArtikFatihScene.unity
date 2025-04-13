@@ -8982,7 +8982,15 @@ PrefabInstance:
       objectReference: {fileID: 4864944293383124153, guid: 060f9cc34c70c704ebe806b61487b862, type: 3}
     - target: {fileID: 1462370162184940675, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
       propertyPath: rageDuration
-      value: 4
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462370162184940675, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
+      propertyPath: thrustDamage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462370162184940675, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
+      propertyPath: groundSlamDamage
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2221541627821649642, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
       propertyPath: m_Camera
