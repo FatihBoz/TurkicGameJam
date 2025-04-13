@@ -21,6 +21,11 @@ public class ThrustSkill : Skill
 
     void Update()
     {
+        if (locked)
+        {
+            return;
+        }
+        
         // Check for keypress and activate rage if not on cooldown
         if (Input.GetKeyDown(thrustSkillKey) && !isOnCooldown && !isThrustActive)
         {

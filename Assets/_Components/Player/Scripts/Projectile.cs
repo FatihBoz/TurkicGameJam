@@ -5,7 +5,7 @@ public class Projectile : MonoBehaviour
     [SerializeField] protected GameObject hitEffect;
     [SerializeField] protected float speed = 10f;
     [SerializeField] protected float lifetime = 1.5f;
-
+    [SerializeField] protected float damage;
     float elapsedTimeAfterInstantiated = 0f;
 
 
@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
         {
             ScreenShake.Instance.Shake(1.2f, 0.3f);
             Destroy(Instantiate(hitEffect, transform.position, Quaternion.identity), 1f);
-            damageReceiver.TakeDamage(10f);
+            damageReceiver.TakeDamage(damage);
             Destroy(gameObject);
         }
     }

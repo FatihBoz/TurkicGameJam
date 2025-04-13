@@ -6,6 +6,17 @@ public abstract class Skill : MonoBehaviour
     protected bool isOnCooldown = false;
     [SerializeField] protected SkillBar skillBar;
 
+
+    public bool locked;
+    void Awake()
+    {
+        locked=true;
+    }
+    public void UnlockSkill()
+    {
+        locked=false;
+        skillBar.Unlock();
+    }
     public SkillBar GetSkillBar()
     {
         return skillBar;

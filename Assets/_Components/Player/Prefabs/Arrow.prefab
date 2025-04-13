@@ -71,6 +71,7 @@ MonoBehaviour:
   hitEffect: {fileID: 1425239480752687595, guid: 625ab5c2fa8673b4a95851d1c96a2dd0, type: 3}
   speed: 20
   lifetime: 1.2
+  damage: 40
 --- !u!54 &-6486137351670501185
 Rigidbody:
   m_ObjectHideFlags: 0
