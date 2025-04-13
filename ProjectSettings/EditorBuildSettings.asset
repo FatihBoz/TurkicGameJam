@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/_Components/Scenes/MainMenu.unity
     guid: e256c45b271061a46a653eac41ba8dfb
   - enabled: 1
-    path: Assets/_Components/Scenes/ArtikFatihScene.unity
-    guid: d9080879b3a5e814b8b611ea5dc84aa7
+    path: Assets/_Components/Scenes/RealLevel.unity
+    guid: b5616e9332df3d646a218cb5eabbca94
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

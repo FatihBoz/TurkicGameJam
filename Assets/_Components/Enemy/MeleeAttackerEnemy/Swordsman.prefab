@@ -2196,7 +2196,7 @@ MonoBehaviour:
   patrolParent: {fileID: 0}
   player: {fileID: 0}
   attackRange: 1
-  detectionRange: 5
+  detectionRange: 3
   retreatRange: 1.5
   moveSpeed: 2
   attackCooldown: 1.5

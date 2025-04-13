@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerChange : MonoBehaviour
 {
     public static PlayerChange Instance { get; private set; }
-    
+    [SerializeField] private Transform initialTransform;
     [SerializeField] private GameObject changeEffect;
     [SerializeField] private GameObject archer;
     [SerializeField] private GameObject warrior;
@@ -62,5 +62,21 @@ public class PlayerChange : MonoBehaviour
     public GameObject GetPlayer()
     {
         return player;
+    }
+
+    private void OnEnable()
+    {
+        PlayerHealth.OnPlayerDeath += OnEnemyDeath;
+    }
+
+    private void OnEnemyDeath()
+    {
+        archer.transform.position = initialTransform.position;
+        warrior.transform.position = initialTransform.position;
+    }
+
+    private void OnDisable()
+    {
+        PlayerHealth.OnPlayerDeath -= OnEnemyDeath;
     }
 }

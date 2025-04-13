@@ -1,21 +1,18 @@
+using System;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField]
-    private float health = 100f;
 
+    public static float health = 60f;
+    public static Action OnPlayerDeath;
     public void TakeDamage(float amount)
     {
         health -= amount;
         if (health <= 0f)
         {
-            Die();
+            OnPlayerDeath?.Invoke();
+            health = 60f;
         }
-    }
-
-    void Die()
-    {
-        Destroy(gameObject);
     }
 }
