@@ -24,6 +24,7 @@ public class ThrustSkill : Skill
         // Check for keypress and activate rage if not on cooldown
         if (Input.GetKeyDown(thrustSkillKey) && !isOnCooldown && !isThrustActive)
         {
+            skillBar.Cooldown(cooldownTime);
             isOnCooldown = true;
             isThrustActive = true;
             
