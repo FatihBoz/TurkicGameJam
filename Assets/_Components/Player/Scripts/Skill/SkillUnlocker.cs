@@ -8,23 +8,44 @@ public class SkillUnlocker : MonoBehaviour
     public static SkillUnlocker Instance;
     public Skill[] archerSkills;
     public Skill[] warriorSkills;
+    public float unlockedSkill;
     void Awake()
     {
         Instance=this;
         slayedMonsterCount++;
     }
+    void OnEnable()
+    {
+        PlayerChange.OnPlayerChange +=OnCharacterChange;
+    }
+    void OnDisable()
+    {
+        PlayerChange.OnPlayerChange -=OnCharacterChange;
+    }
+
+    public void OnCharacterChange()
+    {
+        for (int i = 0; i < Mathf.CeilToInt(unlockedSkill*archerSkills.Length); i++)
+        {
+            archerSkills[i].UnlockSkill();
+        }
+        for (int i = 0; i < Mathf.CeilToInt(unlockedSkill*warriorSkills.Length); i++)
+        {
+            warriorSkills[i].UnlockSkill();
+        }
+    }
     public void IncreaseSlayedMonsterCount()
     {
         slayedMonsterCount++;
 
-        int unlockedSkill=Mathf.FloorToInt((float)slayedMonsterCount/totalMonsterCount);
-        if (unlockedSkill<archerSkills.Length)
+        unlockedSkill=(float)slayedMonsterCount/totalMonsterCount;
+        for (int i = 0; i < Mathf.CeilToInt(unlockedSkill*archerSkills.Length); i++)
         {
-            archerSkills[unlockedSkill].UnlockSkill();
+            archerSkills[i].UnlockSkill();
         }
-        if (unlockedSkill<warriorSkills.Length)
+        for (int i = 0; i < Mathf.CeilToInt(unlockedSkill*warriorSkills.Length); i++)
         {
-            warriorSkills[unlockedSkill].UnlockSkill();
+            warriorSkills[i].UnlockSkill();
         }
     }
 
