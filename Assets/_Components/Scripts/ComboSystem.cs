@@ -43,11 +43,25 @@ public class ComboSystem : MonoBehaviour
     [SerializeField] private float rageMoveSpeedMultiplier = 1.2f;
     [SerializeField] private GameObject rageEffectPrefab;
     
+    [Header("Thrust Skill Settings")]
+    [SerializeField] private float thrustDamage = 75f;
+    [SerializeField] private float thrustRange = 5f;
+    [SerializeField] private float thrustForce = 15f;
+    [SerializeField] private float thrustKnockback = 20f;
+    [SerializeField] private float thrustCooldown = 5f;
+    [SerializeField] private GameObject thrustEffectPrefab;
+    
+    [Header("Slash Effect Settings")]
+    [SerializeField] private GameObject slashEffectPrefab;
+    [SerializeField] private float slashEffectDuration = 0.5f;
+    [SerializeField] private Vector3 slashEffectOffset = new Vector3(0, 0, 1f);
+    
     // Combo state
     private bool firstAttack = false;
     private bool secondAttack = false;
     private bool thirdAttack = false;
     private bool isGroundSlamming = false;
+    private bool isThrustActive = false;
     private Rigidbody rb;
     
     // Rage state
@@ -85,6 +99,9 @@ public class ComboSystem : MonoBehaviour
         if (Input.GetButtonDown("Fire1") || Input.GetMouseButtonDown(0))
         {
             if (CheckForGroundSlam())
+                return;
+                
+            if (isThrustActive)
                 return;
                 
             PerformAttack();
@@ -235,6 +252,9 @@ public class ComboSystem : MonoBehaviour
         {
             DoHitStop();
         }
+        
+        // Instantiate slash effect
+        SpawnSlashEffect();
     }
     
     // Called from animation event during second attack animation
@@ -245,6 +265,9 @@ public class ComboSystem : MonoBehaviour
         {
             DoHitStop();
         }
+        
+        // Instantiate slash effect
+        SpawnSlashEffect();
     }
     
     // Called from animation event during third attack animation
@@ -255,6 +278,9 @@ public class ComboSystem : MonoBehaviour
         {
             DoHitStop();
         }
+        
+        // Instantiate slash effect
+        SpawnSlashEffect();
     }
     
     private bool DealDamageInArea(float damageAmount, float knockbackForce)
@@ -269,6 +295,10 @@ public class ComboSystem : MonoBehaviour
             if (enemyHealth != null)
             {
                 enemyHealth.TakeDamage(damageAmount);
+                if (ScreenShake.Instance != null)
+                {
+                    ScreenShake.Instance.Shake(4f, 0.3f);
+                }
                 ApplyKnockback(enemy.transform, knockbackForce);
                 return true; // We hit at least one enemy
             }
@@ -331,6 +361,11 @@ public class ComboSystem : MonoBehaviour
         // Draw ground slam range
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, groundSlamRange);
+        
+        // Draw thrust range
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * thrustRange);
+        Gizmos.DrawWireSphere(transform.position + transform.forward * thrustRange, 1f);
     }
 
     public void RageActivate()
@@ -399,5 +434,111 @@ public class ComboSystem : MonoBehaviour
     public bool IsRageActive()
     {
         return isRageActive;
+    }
+
+    // Thrust Skill Implementation
+    public void ThrustActivate()
+    {
+        if (isThrustActive)
+            return;
+            
+        isThrustActive = true;
+        
+        // Set animator boolean
+        animator.SetBool("isThrusting", true);
+        
+        // Disable movement during thrust
+        playerMovement.SetCanMove(false);
+        
+        // Apply forward thrust force
+        rb.AddForce(transform.forward * thrustForce, ForceMode.Impulse);
+        
+        // Spawn visual effects
+        if (thrustEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(thrustEffectPrefab, transform.position + transform.forward, transform.rotation);
+            Destroy(effect, 2f);
+        }
+        
+        // Schedule the damage application and reset
+
+    }
+    
+    public void ApplyThrustDamageAndReset()
+    {
+        // Wait a small amount of time for the animation to play and thrust to move player forward
+
+        
+        // Apply damage in the forward direction
+        ApplyThrustDamage();
+        
+        
+  
+    }
+    public void ThrustEnd()
+    {
+      // Reset thrust state
+        isThrustActive = false;
+        animator.SetBool("isThrusting", false);
+        
+        // Re-enable player movement
+        playerMovement.SetCanMove(true);
+    }
+    
+    private void ApplyThrustDamage()
+    {
+        // Cast a ray or capsule in the forward direction to detect enemies
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, 1f, transform.forward, thrustRange, enemyLayers);
+        
+        bool hitSomething = false;
+        foreach (RaycastHit hit in hits)
+        {
+            EnemyHealth enemyHealth = hit.collider.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(thrustDamage);
+                
+                // Apply knockback in the forward direction
+                Rigidbody enemyRb = hit.collider.GetComponent<Rigidbody>();
+                if (enemyRb != null)
+                {
+                    enemyRb.AddForce(transform.forward * thrustKnockback, ForceMode.Impulse);
+                }
+                
+                // Screen shake
+                if (ScreenShake.Instance != null)
+                {
+                    ScreenShake.Instance.Shake(5f, 0.2f);
+                }
+                
+                hitSomething = true;
+            }
+        }
+        
+        // Apply hit stop if something was hit
+        if (hitSomething && useHitStop)
+        {
+            DoHitStop();
+        }
+    }
+    
+    public bool IsThrustActive()
+    {
+        return isThrustActive;
+    }
+
+    private void SpawnSlashEffect()
+    {
+        if (slashEffectPrefab != null)
+        {
+            // Calculate position in front of the player based on facing direction
+            Vector3 spawnPosition = transform.position + transform.forward * slashEffectOffset.z + transform.up * slashEffectOffset.y + transform.right * slashEffectOffset.x;
+            
+            // Instantiate the effect aligned with player's rotation
+            GameObject slashEffect = Instantiate(slashEffectPrefab, spawnPosition, transform.rotation);
+            
+            // Destroy the effect after set duration
+            Destroy(slashEffect, slashEffectDuration);
+        }
     }
 } 

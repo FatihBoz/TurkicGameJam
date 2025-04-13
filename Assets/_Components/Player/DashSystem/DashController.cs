@@ -6,6 +6,7 @@ public class DashController : MonoBehaviour
 {
     private InputSystem_Actions inputActions;
     private Rigidbody rb;
+    private Animator animator;
 
     [Header("Movement")]
     public float moveSpeed = 5f;
@@ -25,6 +26,7 @@ public class DashController : MonoBehaviour
     {
         inputActions = new InputSystem_Actions();
         rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -89,5 +91,10 @@ public class DashController : MonoBehaviour
     {
         DashTrail trail = Instantiate(dashTrailPrefab, new Vector3(0, start.y + 20, 0), Quaternion.identity);
         trail.Initialize(start, end);
+    }
+
+    private void FixedUpdate()
+    {
+        animator.SetBool("isDashing", isDashing);
     }
 }
