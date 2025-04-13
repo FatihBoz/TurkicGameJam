@@ -16,6 +16,7 @@ public class BouncingArrowCaster : Skill
         
         if (Input.GetKeyDown(KeyCode.R) && !Archer.Instance.isCasting && !isOnCooldown)
         {
+            ScreenShake.Instance.Shake();
             Archer.Instance.InstantiateBouncingArrow(arrowPrefab);
             skillBar.Cooldown(cooldownTime);
             isOnCooldown = true;

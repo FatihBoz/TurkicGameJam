@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerChange : MonoBehaviour
 {
     public static PlayerChange Instance { get; private set; }
+    
     [SerializeField] private GameObject changeEffect;
     [SerializeField] private GameObject archer;
     [SerializeField] private GameObject warrior;
