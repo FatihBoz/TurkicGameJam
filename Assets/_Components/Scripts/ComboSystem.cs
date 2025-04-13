@@ -43,6 +43,11 @@ public class ComboSystem : MonoBehaviour
     [SerializeField] private float rageMoveSpeedMultiplier = 1.2f;
     [SerializeField] private GameObject rageEffectPrefab;
     
+    [Header("Slash Effect Settings")]
+    [SerializeField] private GameObject slashEffectPrefab;
+    [SerializeField] private float slashEffectDuration = 0.5f;
+    [SerializeField] private Vector3 slashEffectOffset = new Vector3(0, 0, 1f);
+    
     // Combo state
     private bool firstAttack = false;
     private bool secondAttack = false;
@@ -235,6 +240,9 @@ public class ComboSystem : MonoBehaviour
         {
             DoHitStop();
         }
+        
+        // Instantiate slash effect
+        SpawnSlashEffect();
     }
     
     // Called from animation event during second attack animation
@@ -245,6 +253,9 @@ public class ComboSystem : MonoBehaviour
         {
             DoHitStop();
         }
+        
+        // Instantiate slash effect
+        SpawnSlashEffect();
     }
     
     // Called from animation event during third attack animation
@@ -255,6 +266,9 @@ public class ComboSystem : MonoBehaviour
         {
             DoHitStop();
         }
+        
+        // Instantiate slash effect
+        SpawnSlashEffect();
     }
     
     private bool DealDamageInArea(float damageAmount, float knockbackForce)
@@ -269,6 +283,10 @@ public class ComboSystem : MonoBehaviour
             if (enemyHealth != null)
             {
                 enemyHealth.TakeDamage(damageAmount);
+                if (ScreenShake.Instance != null)
+                {
+                    ScreenShake.Instance.Shake(4f, 0.3f);
+                }
                 ApplyKnockback(enemy.transform, knockbackForce);
                 return true; // We hit at least one enemy
             }
@@ -399,5 +417,20 @@ public class ComboSystem : MonoBehaviour
     public bool IsRageActive()
     {
         return isRageActive;
+    }
+
+    private void SpawnSlashEffect()
+    {
+        if (slashEffectPrefab != null)
+        {
+            // Calculate position in front of the player based on facing direction
+            Vector3 spawnPosition = transform.position + transform.forward * slashEffectOffset.z + transform.up * slashEffectOffset.y + transform.right * slashEffectOffset.x;
+            
+            // Instantiate the effect aligned with player's rotation
+            GameObject slashEffect = Instantiate(slashEffectPrefab, spawnPosition, transform.rotation);
+            
+            // Destroy the effect after set duration
+            Destroy(slashEffect, slashEffectDuration);
+        }
     }
 } 

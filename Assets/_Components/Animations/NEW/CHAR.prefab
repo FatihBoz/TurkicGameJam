@@ -90,27 +90,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.043
+      value: 0.9715691
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.043
+      value: 0.9715691
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.043
+      value: 0.9715691
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.06
+      value: -7.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.902
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -18.2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -177,6 +177,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1351705366115764684}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2014890850860222862}
   m_SourcePrefab: {fileID: 100100000, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
 --- !u!95 &2304827853306661471 stripped
 Animator:
@@ -294,12 +297,15 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
-  slamEffectPrefab: {fileID: 0}
+  slamEffectPrefab: {fileID: 1180248314969840, guid: 101d62f0a3e4fef4eab61adb79c845df, type: 3}
   rageDuration: 10
   rageDamageMultiplier: 1.5
   rageAttackSpeedMultiplier: 2
   rageMoveSpeedMultiplier: 1.2
   rageEffectPrefab: {fileID: 5063797671218287874, guid: f5a095cc86dadd04390900724859130d, type: 3}
+  slashEffectPrefab: {fileID: 1652400581503036, guid: 3d8fa4ddbbe5a3841b1a661d0350e05a, type: 3}
+  slashEffectDuration: 0.5
+  slashEffectOffset: {x: 0, y: 0, z: 1}
 --- !u!114 &1351705366115764684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +323,19 @@ MonoBehaviour:
   dashDuration: 0.2
   dashCooldown: 1
   dashTrailPrefab: {fileID: 0}
+--- !u!114 &2014890850860222862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4780457482143697567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b6917c072fec54cb1b305bbdbe356e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!4 &5268165293308956709 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}

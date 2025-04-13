@@ -19,7 +19,7 @@ public class ScreenShake : MonoBehaviour
         noise = virtualCamera.GetComponent<CinemachineBasicMultiChannelPerlin>();
     }
 
-    public void Shake(float intensity, float time)
+    public void Shake(float intensity=1f, float time=0.3f)
     {
         noise.AmplitudeGain = intensity;
         startingIntensity = intensity;
