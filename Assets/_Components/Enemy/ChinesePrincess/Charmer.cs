@@ -12,7 +12,7 @@ public class Charmer : MonoBehaviour
 
     // Yeni: Hasar verme mesafesi ve hasar ayarlarý
     public float damageDistance = 2f;
-    public float damagePerSecond = 10f;
+    public float damagePerSecond = 2f;
     private float lastDamageTime;
 
     Rigidbody rb;

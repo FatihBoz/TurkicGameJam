@@ -10,7 +10,7 @@ public class SpearEnemyAI : MonoBehaviour
 
     [Header("Combat Properties")]
     public Transform player;              // Oyuncu
-    public float attackRange = 3f;        // Saldýrý menzili
+    public float attackRange = 1f;        // Saldýrý menzili
     public float detectionRange = 10f;    // Tespit menzili
     public float retreatRange = 1.5f;     // Geri çekilme mesafesi
     public float moveSpeed = 2f;          // Hareket hýzý
@@ -61,56 +61,67 @@ public class SpearEnemyAI : MonoBehaviour
         return firstState;
     }
 
-    private void Start()
-    {
-
-    }
-
     void Update()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);     
 
+
         switch (currentState)
         {
             case State.Patrol:
+                PatrolBehaviour();
+
                 if (distanceToPlayer < detectionRange)
                 {
                     currentState = State.Chase;
                 }
-                PatrolBehaviour();
-
                 break;
 
             case State.Chase:
+
+                AnimatorStateInfo animState = animator.GetCurrentAnimatorStateInfo(0);
+                // Eðer saldýrý animasyonu devam ediyorsa, state deðiþtirme
+                if (animState.IsName("NormalAttack02_SwordShield") || animState.IsName("NormalAttack01_SwordShield"))
+                {
+                    print("Attack Animation is playing");
+                    animator.SetBool("isChasing", true); 
+                    // Hâlâ saldýrý animasyonu oynuyor
+                    break;
+                }
+                ChasePlayer();
+
+
                 if (distanceToPlayer <= attackRange)
                 {
                     currentState = State.Attack;
                 }
-                ChasePlayer();
 
                 break;
+            
 
             case State.Attack:
+                AttackPlayer();
                 if (distanceToPlayer > attackRange)
                 {
                     currentState = State.Chase;
                 }
-                AttackPlayer();
 
                 break;
 
             case State.Idle:
+                IdleWait();
+
                 if (distanceToPlayer < detectionRange)
                 {
                     currentState = State.Chase;
                 }
-                IdleWait();
-
                 break;
+
         }
+
+        //AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        print(" Current State Name: " + currentState);
     }
-
-
 
     // Patrol Yapma
     void PatrolBehaviour()
@@ -155,8 +166,6 @@ public class SpearEnemyAI : MonoBehaviour
     {
         agent.speed = 0f; // Beklerken hareket etmesin
         animator.SetBool("isPatrol", false); // Yürüyüþ animasyonunu durdur
-
-
     }
 
     // Oyuncuyu takip etme
@@ -175,11 +184,13 @@ public class SpearEnemyAI : MonoBehaviour
         agent.speed = 0f;  // Saldýrýrken hareket etmesin
         if (Time.time - lastAttackTime > attackCooldown)
         {
-            // Burada mýzrak saldýrýsý animasyonu ve etkiyi tetikleyebilirsiniz.
-            Debug.Log("Attack!");
             animator.SetTrigger("Attack");
+
+            player.GetComponent<PlayerHealth>().TakeDamage(5);
+
             animator.SetBool("isChasing", false); // Yürüyüþ animasyonunu durdur
 
+            transform.LookAt(player.position); // Oyuncuya bakma
 
             // Saldýrýyý gerçekleþtirdikten sonra saldýrý zamanýný güncelle
             lastAttackTime = Time.time;
