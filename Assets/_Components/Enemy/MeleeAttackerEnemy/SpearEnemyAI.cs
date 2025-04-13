@@ -63,6 +63,7 @@ public class SpearEnemyAI : MonoBehaviour
 
     void Update()
     {
+        player = PlayerChange.Instance.GetPlayer().transform;
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);     
 
 

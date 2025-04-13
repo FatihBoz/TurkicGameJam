@@ -291,8 +291,7 @@ public class ComboSystem : MonoBehaviour
         // Apply damage to enemies
         foreach (Collider enemy in hitEnemies)
         {
-            EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
-            if (enemyHealth != null)
+            if (enemy.TryGetComponent<IDamageReceiver>(out var enemyHealth))
             {
                 enemyHealth.TakeDamage(damageAmount);
                 if (ScreenShake.Instance != null)

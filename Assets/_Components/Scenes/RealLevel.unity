@@ -356,6 +356,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9b2c2ea8472caa40b47a88cf3badc04, type: 3}
+--- !u!114 &36383552 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 129502763046522055, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
+  m_PrefabInstance: {fileID: 1669573269}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecb9ba67443e0c24cbb09006f6b7fe48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &38629252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -367,6 +378,10 @@ PrefabInstance:
     - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_Name
       value: Swordsman (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -412,6 +427,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -514,6 +533,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
   m_PrefabInstance: {fileID: 1628720732}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &61032745
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 61032747}
+  - component: {fileID: 61032746}
+  m_Layer: 0
+  m_Name: SkillUnlocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &61032746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61032745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72b1e705c8a19bc45be855207af0279e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slayedMonsterCount: 0
+  totalMonsterCount: 15
+  archerSkills:
+  - {fileID: 333987371}
+  - {fileID: 2099420649}
+  - {fileID: 780542652}
+  warriorSkills:
+  - {fileID: 36383552}
+  - {fileID: 936419710}
+  unlockedSkill: 0
+--- !u!4 &61032747
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61032745}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.1217186, y: 19.167164, z: -17.248451}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &68074489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -685,6 +758,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (22)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.1952057
@@ -729,6 +806,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -800,6 +881,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (23)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.114787
@@ -844,6 +929,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -962,6 +1051,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (31)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.512648
@@ -1006,6 +1099,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1178,6 +1275,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.34105
@@ -1222,6 +1323,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1243,6 +1348,10 @@ PrefabInstance:
     - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_Name
       value: Swordsman (39)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1288,6 +1397,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1700,6 +1813,17 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   CustomBlends: {fileID: 0}
+--- !u!114 &333987371 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8066004069694971797, guid: d2771d2ea1461bb41b8d779c0629ba97, type: 3}
+  m_PrefabInstance: {fileID: 1613566871}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cd9810edc35f7444a9503d3e277090c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &336611809 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 945401809, guid: a9b2c2ea8472caa40b47a88cf3badc04, type: 3}
@@ -2120,7 +2244,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.28
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 2eb9a6e37572d504fa9ea94f600fc6b3, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 10e6fe398c1bac6438bf8ec4ce17508d, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &381456176
 Transform:
@@ -2389,6 +2513,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -12.617483
@@ -2433,6 +2561,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2507,6 +2639,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.971535
@@ -2551,6 +2687,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2965,6 +3105,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.4807396
@@ -3009,6 +3153,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3272,6 +3420,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.70968
@@ -3316,6 +3468,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3814,6 +3970,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.2310505
@@ -3858,6 +4018,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3879,6 +4043,10 @@ PrefabInstance:
     - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_Name
       value: Swordsman (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3924,6 +4092,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4023,6 +4195,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.653736
@@ -4067,6 +4243,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4167,6 +4347,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.104475
@@ -4211,6 +4395,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4514,6 +4702,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0920f3711e91cbf4c83b4fe71f75b9fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &780542652 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6757442619105191010, guid: d2771d2ea1461bb41b8d779c0629ba97, type: 3}
+  m_PrefabInstance: {fileID: 1613566871}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e1d00d4d95e2e418c581171d64574b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &805434445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4525,6 +4724,10 @@ PrefabInstance:
     - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_Name
       value: Swordsman (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4570,6 +4773,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4748,6 +4955,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -21.573318
@@ -4792,6 +5003,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4901,6 +5116,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.972521
@@ -4945,11 +5164,26 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+--- !u!114 &936419710 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1678920255796957084, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
+  m_PrefabInstance: {fileID: 1669573269}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a750e5cc7fd756f4e8e88614441d306c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &938687953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5422,6 +5656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20.5548
@@ -5466,6 +5704,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5931,7 +6173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f8ca9ac94c2e348a8e85244fdbb071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectDestroy: {fileID: 0}
+  objectDestroy: {fileID: 8084224152350113604, guid: 6b6c16ebaf2d8bd44ad68fa6e961c8cc, type: 3}
 --- !u!1001 &1059345010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5943,6 +6185,10 @@ PrefabInstance:
     - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_Name
       value: Swordsman (40)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5988,6 +6234,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6141,6 +6391,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.194248
@@ -6185,6 +6439,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6305,6 +6563,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.6107445
@@ -6349,6 +6611,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6702,6 +6968,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (24)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.0962696
@@ -6746,6 +7016,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6762,10 +7036,6 @@ PrefabInstance:
     - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_Name
       value: Swordsman
-      objectReference: {fileID: 0}
-    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6815,14 +7085,6 @@ PrefabInstance:
       propertyPath: patrolParent
       value: 
       objectReference: {fileID: 1278973257}
-    - target: {fileID: 6718991601616123803, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
-      propertyPath: m_Height
-      value: 2.4916992
-      objectReference: {fileID: 0}
-    - target: {fileID: 6718991601616123803, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
-      propertyPath: m_Center.y
-      value: 0.7458496
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6839,6 +7101,10 @@ PrefabInstance:
     - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_Name
       value: Swordsman (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6884,6 +7150,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6900,6 +7170,10 @@ PrefabInstance:
     - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_Name
       value: Swordsman (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6945,6 +7219,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7566,6 +7844,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (25)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.499256
@@ -7610,6 +7892,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8400,6 +8686,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (36)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.39575
@@ -8444,6 +8734,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8595,6 +8889,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.629262
@@ -8639,6 +8937,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8929,6 +9231,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.597353
@@ -8973,6 +9279,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9205,6 +9515,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (20)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.708723
@@ -9249,6 +9563,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9548,6 +9866,22 @@ PrefabInstance:
       propertyPath: rageDuration
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1462370162184940675, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
+      propertyPath: groundSlamDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462370162184940675, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
+      propertyPath: firstAttackDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462370162184940675, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
+      propertyPath: thirdAttackDamage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462370162184940675, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
+      propertyPath: secondAttackDamage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2221541627821649642, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
       propertyPath: m_Camera
       value: 
@@ -9617,6 +9951,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.514475
@@ -9661,6 +9999,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9770,7 +10112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f8ca9ac94c2e348a8e85244fdbb071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectDestroy: {fileID: 0}
+  objectDestroy: {fileID: 8084224152350113604, guid: 6b6c16ebaf2d8bd44ad68fa6e961c8cc, type: 3}
 --- !u!1001 &1700549051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9782,6 +10124,10 @@ PrefabInstance:
     - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_Name
       value: Swordsman (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9827,6 +10173,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9843,6 +10193,10 @@ PrefabInstance:
     - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_Name
       value: Swordsman (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9888,6 +10242,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10426,6 +10784,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.713005
@@ -10470,6 +10832,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10824,6 +11190,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (34)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22.187353
@@ -10868,6 +11238,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11097,7 +11471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93f8ca9ac94c2e348a8e85244fdbb071, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectDestroy: {fileID: 0}
+  objectDestroy: {fileID: 8084224152350113604, guid: 6b6c16ebaf2d8bd44ad68fa6e961c8cc, type: 3}
 --- !u!4 &1886795013 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
@@ -11426,6 +11800,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11470,6 +11848,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11638,6 +12020,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (19)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.7455254
@@ -11682,6 +12068,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12039,6 +12429,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Swordsman (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.486996
@@ -12083,6 +12477,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12109,6 +12507,10 @@ PrefabInstance:
     - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_Name
       value: Swordsman (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1835885862194036, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12154,6 +12556,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1613566872}
+    - target: {fileID: 2953742118254859937, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12267,6 +12673,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2099420649 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1987636227354860585, guid: d2771d2ea1461bb41b8d779c0629ba97, type: 3}
+  m_PrefabInstance: {fileID: 1613566871}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdc3a17ab29648458e56dcb4472b12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2126207518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4158096630655302, guid: 26baf6fdc3e474149a48c12591df79d2, type: 3}
@@ -12694,3 +13111,4 @@ SceneRoots:
   - {fileID: 649946157}
   - {fileID: 1384870927}
   - {fileID: 452369131}
+  - {fileID: 61032747}

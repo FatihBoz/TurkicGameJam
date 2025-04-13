@@ -2135,7 +2135,7 @@ GameObject:
   - component: {fileID: 6912108766496523085}
   - component: {fileID: 6718991601616123803}
   - component: {fileID: 8434598773727144674}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Swordsman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2195,8 +2195,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrolParent: {fileID: 0}
   player: {fileID: 0}
-  attackRange: 3
-  detectionRange: 10
+  attackRange: 1
+  detectionRange: 5
   retreatRange: 1.5
   moveSpeed: 2
   attackCooldown: 1.5
@@ -2212,7 +2212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b41f288ef992e4b8b5a7420626231a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 50
 --- !u!54 &6912108766496523085
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2260,9 +2260,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 2.4916992
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.7458496, z: 0}
 --- !u!195 &8434598773727144674
 NavMeshAgent:
   m_ObjectHideFlags: 0
