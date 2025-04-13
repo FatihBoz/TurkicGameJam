@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerChange : MonoBehaviour
@@ -11,8 +10,6 @@ public class PlayerChange : MonoBehaviour
     bool isArcherActive = true;
     private GameObject player;
 
-    public static Action OnPlayerChange;
-
     private void Awake()
     {
         Instance = this;
@@ -24,7 +21,6 @@ public class PlayerChange : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            
             if (isArcherActive)
             {
                 player = warrior;
@@ -57,7 +53,6 @@ public class PlayerChange : MonoBehaviour
              
                 isArcherActive = true;
             }
-            OnPlayerChange?.Invoke();
         }
     }
 
