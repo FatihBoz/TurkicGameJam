@@ -15,6 +15,7 @@ public abstract class Skill : MonoBehaviour
     public void UnlockSkill()
     {
         locked=false;
+        skillBar.Unlock();
     }
     public SkillBar GetSkillBar()
     {

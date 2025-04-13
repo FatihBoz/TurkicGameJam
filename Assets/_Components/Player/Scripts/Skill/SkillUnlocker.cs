@@ -25,38 +25,31 @@ public class SkillUnlocker : MonoBehaviour
 
     public void OnCharacterChange()
     {
-        for (int i = 0; i < Mathf.CeilToInt(unlockedSkill*archerSkills.Length); i++)
-        {
-            archerSkills[i].UnlockSkill();
-        }
-        for (int i = 0; i < Mathf.CeilToInt(unlockedSkill*warriorSkills.Length); i++)
-        {
-            warriorSkills[i].UnlockSkill();
-        }
+        UnlockSkills();
     }
     public void IncreaseSlayedMonsterCount()
     {
         slayedMonsterCount++;
-
         unlockedSkill=(float)slayedMonsterCount/totalMonsterCount;
+        UnlockSkills();
+
+    }
+
+    public void UnlockSkills()
+    {
         for (int i = 0; i < Mathf.CeilToInt(unlockedSkill*archerSkills.Length); i++)
         {
-            archerSkills[i].UnlockSkill();
+            if (i<archerSkills.Length)
+            {
+                archerSkills[i].UnlockSkill();
+            }
         }
         for (int i = 0; i < Mathf.CeilToInt(unlockedSkill*warriorSkills.Length); i++)
         {
-            warriorSkills[i].UnlockSkill();
+            if (i<warriorSkills.Length)
+            {
+                warriorSkills[i].UnlockSkill();
+            }
         }
-    }
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
