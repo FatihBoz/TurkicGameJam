@@ -36,12 +36,27 @@ public class ComboSystem : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private GameObject slamEffectPrefab;
     
+    [Header("Rage Skill Settings")]
+    [SerializeField] private float rageDuration = 10f;
+    [SerializeField] private float rageDamageMultiplier = 1.5f;
+    [SerializeField] private float rageAttackSpeedMultiplier = 1.3f;
+    [SerializeField] private float rageMoveSpeedMultiplier = 1.2f;
+    [SerializeField] private GameObject rageEffectPrefab;
+    
     // Combo state
     private bool firstAttack = false;
     private bool secondAttack = false;
     private bool thirdAttack = false;
     private bool isGroundSlamming = false;
     private Rigidbody rb;
+    
+    // Rage state
+    private bool isRageActive = false;
+    private float originalFirstAttackDamage;
+    private float originalSecondAttackDamage;
+    private float originalThirdAttackDamage;
+    private float originalGroundSlamDamage;
+    private float originalMoveSpeed;
     
     
     private void Start()
@@ -56,6 +71,13 @@ public class ComboSystem : MonoBehaviour
             playerMovement = GetComponent<BasicMovement>();
         
         rb = GetComponent<Rigidbody>();
+        
+        // Store original values for rage state
+        originalFirstAttackDamage = firstAttackDamage;
+        originalSecondAttackDamage = secondAttackDamage;
+        originalThirdAttackDamage = thirdAttackDamage;
+        originalGroundSlamDamage = groundSlamDamage;
+        originalMoveSpeed = playerMovement.GetMoveSpeed();
     }
     
     private void Update()
@@ -309,5 +331,73 @@ public class ComboSystem : MonoBehaviour
         // Draw ground slam range
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, groundSlamRange);
+    }
+
+    public void RageActivate()
+    {
+        if (isRageActive)
+            return;
+            
+        isRageActive = true;
+        
+        // Apply rage buffs
+        firstAttackDamage *= rageDamageMultiplier;
+        secondAttackDamage *= rageDamageMultiplier;
+        thirdAttackDamage *= rageDamageMultiplier;
+        groundSlamDamage *= rageDamageMultiplier;
+        
+        // Set move speed if player movement has the property
+        playerMovement.SetMoveSpeed(originalMoveSpeed * rageMoveSpeedMultiplier);
+        
+        // Set attack speed through animator
+        animator.SetFloat("AttackSpeed", rageAttackSpeedMultiplier);
+        
+        // Activate visual effects
+        if (rageEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(rageEffectPrefab, transform);
+            Destroy(effect, rageDuration);
+        }
+        
+        // Set animator parameter
+        animator.SetBool("RageActive", true);
+        
+        // Start the timer to deactivate rage
+        StartCoroutine(DeactivateRageAfterDuration());
+    }
+    
+    private IEnumerator DeactivateRageAfterDuration()
+    {
+        yield return new WaitForSeconds(rageDuration);
+        Debug.Log("Deactivating Rage");
+        DeactivateRage();
+    }
+    
+    private void DeactivateRage()
+    {
+        if (!isRageActive)
+            return;
+            
+        isRageActive = false;
+        
+        // Reset stats to original values
+        firstAttackDamage = originalFirstAttackDamage;
+        secondAttackDamage = originalSecondAttackDamage;
+        thirdAttackDamage = originalThirdAttackDamage;
+        groundSlamDamage = originalGroundSlamDamage;
+        
+        // Reset move speed
+        playerMovement.SetMoveSpeed(originalMoveSpeed);
+        
+        // Reset attack speed
+        animator.SetFloat("AttackSpeed", 1f);
+        
+        // Reset animator parameter
+        animator.SetBool("RageActive", false);
+    }
+    
+    public bool IsRageActive()
+    {
+        return isRageActive;
     }
 } 

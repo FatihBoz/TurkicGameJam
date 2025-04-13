@@ -139,7 +139,7 @@ public class BasicMovement : MonoBehaviour
             currentJumps = 0;
         }
 
-        // Görsel kontrol için çizim
+        // Gï¿½rsel kontrol iï¿½in ï¿½izim
         Debug.DrawRay(origin, Vector3.down * groundCheckDistance, isGrounded ? Color.green : Color.red);
     }
 
@@ -161,5 +161,15 @@ public class BasicMovement : MonoBehaviour
     public bool IsGrounded()
     {
         return isGrounded;
+    }
+
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
+    }
+    
+    public void SetMoveSpeed(float value)
+    {
+        moveSpeed = value;
     }
 }
