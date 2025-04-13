@@ -37,6 +37,7 @@ public class SkillUnlocker : MonoBehaviour
 
 public void UnlockSkills()
     {
+        Debug.Log(warriorSkills.Length);
         for (int i = 0; i < Mathf.CeilToInt(unlockedSkill*archerSkills.Length); i++)
         {
          
@@ -47,7 +48,7 @@ public void UnlockSkills()
         }
         for (int i = 0; i < Mathf.CeilToInt(unlockedSkill*warriorSkills.Length); i++)
         {
-         
+            Debug.Log(i);
             if (i<warriorSkills.Length)
             {
                 warriorSkills[i].UnlockSkill();

@@ -313,6 +313,10 @@ PrefabInstance:
       value: Thrust
       objectReference: {fileID: 0}
     - target: {fileID: 4539877882999047686, guid: a81bbfde00bc550449f84682c42f79f1, type: 3}
+      propertyPath: lockOBJ
+      value: 
+      objectReference: {fileID: 57355806868412090}
+    - target: {fileID: 4539877882999047686, guid: a81bbfde00bc550449f84682c42f79f1, type: 3}
       propertyPath: cooldown
       value: 5
       objectReference: {fileID: 0}
@@ -401,6 +405,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a81bbfde00bc550449f84682c42f79f1, type: 3}
+--- !u!114 &57355806868412090 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1728041838915714932, guid: a81bbfde00bc550449f84682c42f79f1, type: 3}
+  m_PrefabInstance: {fileID: 1671108316524702158}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2895844012741652424 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4539877882999047686, guid: a81bbfde00bc550449f84682c42f79f1, type: 3}
@@ -747,9 +762,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 2304827853306661471}
   playerMovement: {fileID: 2158190413461438134}
-  firstAttackDamage: 20
-  secondAttackDamage: 35
-  thirdAttackDamage: 50
+  firstAttackDamage: 5
+  secondAttackDamage: 10
+  thirdAttackDamage: 15
   attackRange: 1.04
   enemyLayers:
     serializedVersion: 2
@@ -762,7 +777,7 @@ MonoBehaviour:
   useHitStop: 1
   hitStopDuration: 0.1
   timeScale: 0.1
-  groundSlamDamage: 50
+  groundSlamDamage: 5
   groundSlamRange: 3
   groundSlamKnockback: 15
   groundSlamForce: 12.8
