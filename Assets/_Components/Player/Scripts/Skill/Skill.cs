@@ -6,7 +6,6 @@ public abstract class Skill : MonoBehaviour
     protected bool isOnCooldown = false;
     [SerializeField] protected SkillBar skillBar;
 
-
     public SkillBar GetSkillBar()
     {
         return skillBar;
