@@ -2,10 +2,18 @@ using UnityEngine;
 
 public class PlayerChange : MonoBehaviour
 {
+    public static PlayerChange Instance { get; private set; }
     [SerializeField] private GameObject changeEffect;
     [SerializeField] private GameObject archer;
     [SerializeField] private GameObject warrior;
     bool isArcherActive = true;
+    private GameObject player;
+
+    private void Awake()
+    {
+        Instance = this;
+        player = archer;
+    }
 
 
     private void Update()
@@ -14,20 +22,22 @@ public class PlayerChange : MonoBehaviour
         {
             if (isArcherActive)
             {
+                player = warrior;
                 if (archer.TryGetComponent<DashController>(out DashController dashController))
                 {
                     dashController.StopAllCoroutines();
                 }
                 archer.SetActive(false);
                 warrior.SetActive(true);
-                Destroy(Instantiate(changeEffect, archer.transform.position, Quaternion.identity), 1f);
 
-                warrior.transform.position = archer.transform.position;
+                //Destroy(Instantiate(changeEffect, archer.transform.position, Quaternion.identity), 1f);
+                warrior.transform.localPosition = archer.transform.localPosition;
 
                 isArcherActive = false;
             }
             else
             {
+                player = archer;
                 if (warrior.TryGetComponent<DashController>(out DashController dashController))
                 {
                     dashController.StopAllCoroutines();
@@ -35,7 +45,7 @@ public class PlayerChange : MonoBehaviour
                 warrior.SetActive(false);
                 archer.SetActive(true);
 
-                Destroy(Instantiate(changeEffect, warrior.transform.position, Quaternion.identity), 1f);
+                //Destroy(Instantiate(changeEffect, warrior.transform.position, Quaternion.identity), 1f);
 
                 Archer.Instance.RestrainPlayer(false);
                 archer.transform.position = warrior.transform.position;
@@ -43,5 +53,10 @@ public class PlayerChange : MonoBehaviour
                 isArcherActive = true;
             }
         }
+    }
+
+    public GameObject GetPlayer()
+    {
+        return player;
     }
 }
