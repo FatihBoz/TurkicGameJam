@@ -22,8 +22,11 @@ public class Projectile : MonoBehaviour
     }
 
 
+
+
     protected virtual void OnCollisionEnter(Collision collision)
     {
+        print(collision.gameObject.name);
         if (collision.gameObject.CompareTag("Object"))
         {
             collision.gameObject.GetComponent<ObjectDestroy>().DestroyObject();
