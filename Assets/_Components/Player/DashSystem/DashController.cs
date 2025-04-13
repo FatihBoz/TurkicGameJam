@@ -46,7 +46,7 @@ public class DashController : MonoBehaviour
         canDash = false;
 
         // Dash sýrasýnda çarpýþmalarý engelle
-        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
+       // Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
 
         Vector2 moveInput = inputActions.Player.Move.ReadValue<Vector2>();
         if (moveInput != Vector2.zero)
@@ -76,7 +76,7 @@ public class DashController : MonoBehaviour
         CreateDashTrail(startPosition, endPosition);
 
         // Çarpýþma engellemesini kaldýr
-        Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
+        //Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
 
         isDashing = false;
 
