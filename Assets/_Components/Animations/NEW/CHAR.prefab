@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1978603517840382669
+--- !u!1 &210293045690647063
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1251368031321443501}
-  - component: {fileID: 2179687485405241216}
+  - component: {fileID: 8099732160511885645}
+  - component: {fileID: 129502763046522055}
   m_Layer: 0
-  m_Name: ChargedBowAttack
+  m_Name: RageSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1251368031321443501
+--- !u!4 &8099732160511885645
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1978603517840382669}
+  m_GameObject: {fileID: 210293045690647063}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,25 +32,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5268165293308956709}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2179687485405241216
+--- !u!114 &129502763046522055
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1978603517840382669}
+  m_GameObject: {fileID: 210293045690647063}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fdc3a17ab29648458e56dcb4472b12f, type: 3}
+  m_Script: {fileID: 11500000, guid: ecb9ba67443e0c24cbb09006f6b7fe48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cooldownTime: 8
   skillBar: {fileID: 0}
-  projectilePrefab: {fileID: 7387677746529748338, guid: 63de215d0f95ca04e9a539c707ec3164, type: 3}
-  chargeEffectPrefab: {fileID: 7437810868741175512, guid: 78cc5b119814ac448928d96f4b99967a, type: 3}
-  chargeTime: 2
-  waitingTimeBetweenArrows: 0.25
-  maxArrows: 5
+  comboSystem: {fileID: 1462370162184940675}
+  rageSkillKey: 113
+  rageActivationEffect: {fileID: 0}
 --- !u!1 &2217415615565857132
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,92 +80,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5268165293308956709}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &5717249385845434853
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1084633204800677849}
-  m_Layer: 0
-  m_Name: ShootPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1084633204800677849
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5717249385845434853}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.55, z: 0.43}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5268165293308956709}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8651654661190540239
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5288599072402417705}
-  - component: {fileID: 8124260326192006467}
-  m_Layer: 0
-  m_Name: SerpentArrowCaster
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5288599072402417705
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8651654661190540239}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5268165293308956709}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8124260326192006467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8651654661190540239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd9810edc35f7444a9503d3e277090c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldownTime: 8
-  skillBar: {fileID: 0}
-  projectilePrefab: {fileID: 5257942848873276042, guid: 836870c21f3f0b64eaab370e1acddacf, type: 3}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  skillEffect: {fileID: 5988827261509339189, guid: b192cbbc9b0a05b4489ba2e141e2c5dc, type: 3}
-  maxProjectiles: 5
-  rayCount: 15
-  coneAngle: 60
-  rayDistance: 10
 --- !u!1001 &5662978638443034574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -190,15 +102,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.2995124
+      value: 3.06
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00000023841858
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.1018106
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -248,13 +160,7 @@ PrefabInstance:
       addedObject: {fileID: 124432619954588372}
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5288599072402417705}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1251368031321443501}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1084633204800677849}
+      addedObject: {fileID: 8099732160511885645}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
       insertIndex: -1
@@ -268,9 +174,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1462370162184940675}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6596977138229410681}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 56d2667460e8bcd4e8ee9f87816faadb, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1351705366115764684}
@@ -350,6 +253,9 @@ MonoBehaviour:
     m_Bits: 256
   moveSpeed: 5
   rotationSpeed: 10
+  groundCheckRadius: 0.2
+  groundCheckDistance: 0.3
+  groundCheckOffset: {x: 0, y: 0.2, z: 0}
   jumpForce: 7
   maxJumps: 2
 --- !u!114 &1462370162184940675
@@ -374,10 +280,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackPoint: {fileID: 124432619954588372}
-  firstAttackKnockback: 5
-  secondAttackKnockback: 10
-  thirdAttackKnockback: 15
-  knockbackUpwardForce: 2
+  firstAttackKnockback: 0.65
+  secondAttackKnockback: 0.65
+  thirdAttackKnockback: 3
+  knockbackUpwardForce: 0.46
   useHitStop: 1
   hitStopDuration: 0.1
   timeScale: 0.1
@@ -389,24 +295,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   slamEffectPrefab: {fileID: 0}
---- !u!114 &6596977138229410681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4780457482143697567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a2d3107aafe5a34c8d7a90690b9159a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrowPrefab: {fileID: 7387677746529748338, guid: 63de215d0f95ca04e9a539c707ec3164, type: 3}
-  shootPoint: {fileID: 1084633204800677849}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  isCasting: 0
+  rageDuration: 10
+  rageDamageMultiplier: 1.5
+  rageAttackSpeedMultiplier: 2
+  rageMoveSpeedMultiplier: 1.2
+  rageEffectPrefab: {fileID: 5063797671218287874, guid: f5a095cc86dadd04390900724859130d, type: 3}
 --- !u!114 &1351705366115764684
 MonoBehaviour:
   m_ObjectHideFlags: 0

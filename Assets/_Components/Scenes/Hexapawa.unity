@@ -486,8 +486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae88c48d412ef524281bf8daa21d4bba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  isometricMovement: 1
 --- !u!136 &706157864
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -847,24 +845,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1462370162184940675, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
-      propertyPath: firstAttackKnockback
-      value: 0.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 1462370162184940675, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
       propertyPath: knockbackUpwardForce
-      value: 0.46
+      value: 0.92
       objectReference: {fileID: 0}
     - target: {fileID: 1462370162184940675, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
-      propertyPath: thirdAttackKnockback
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1462370162184940675, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
-      propertyPath: secondAttackKnockback
-      value: 0.65
-      objectReference: {fileID: 0}
-    - target: {fileID: 2158190413461438134, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 256
+      propertyPath: rageAttackSpeedMultiplier
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4780457482143697567, guid: 2625a65897cae7144b4e9ace1ab281ef, type: 3}
       propertyPath: m_Name
