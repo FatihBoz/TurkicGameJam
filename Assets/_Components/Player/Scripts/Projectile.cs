@@ -24,7 +24,6 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        print("Collision detected with: " + collision.gameObject.name);
         if(collision.gameObject.TryGetComponent(out IDamageReceiver damageReceiver))
         {
             Destroy(Instantiate(hitEffect, transform.position, Quaternion.identity), 1f);
